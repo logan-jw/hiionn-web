@@ -6,10 +6,10 @@
 <title>Hiionn | 해외 환자 유치 온·오프라인 통합 파트너 · 미니프로그램 데모</title>
 <meta name="description" content="Hiionn(하이온)은 (주)아크로모빌리티가 운영하는 외국인 환자 유치 전문 브랜드입니다. 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 온·오프라인을 하나로 잇고, WeChat 미니프로그램 고객 경험을 데모로 제공합니다.">
 <meta property="og:title" content="Hiionn | 해외 환자 유치 통합 파트너">
-<meta property="og:description" content="병의원은 진료에 집중하고, 해외 환자 유치는 Hiionn이 전담합니다.">
+<meta property="og:description" content="병원은 진료에 집중하고, 해외 환자 유치는 Hiionn이 전담합니다.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="./images/logo-symbol.png">
-<link rel="icon" type="image/png" href="./images/logo-symbol.png">
+<meta property="og:image" content="./images/logo/logo-v-purple.png">
+<link rel="icon" type="image/png" href="./images/logo/logo-icon-purple.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
   header.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(111,90,208,.08);padding:10px 0;}
   .gnb{display:flex;align-items:center;justify-content:space-between;}
   .logo img{height:40px;width:auto;}
-  .logo .white-logo{display:block;filter:brightness(0) invert(1);} .logo .color-logo{display:none;}
+  .logo .white-logo{display:block;} .logo .color-logo{display:none;}
   header.scrolled .logo .white-logo{display:none;} header.scrolled .logo .color-logo{display:block;}
   .gnb-menu{display:flex;gap:24px;align-items:center;}
   .gnb-menu a{font-size:15px;font-weight:500;color:rgba(255,255,255,.9);transition:color .2s;white-space:nowrap;}
@@ -71,14 +71,14 @@
   .hero h1{font-size:clamp(32px,5.4vw,64px);font-weight:800;line-height:1.1;letter-spacing:-.02em;}
   .hero h1 .light{font-weight:400;opacity:.92;}
   .hero .kor-sub{margin-top:24px;font-size:clamp(17px,2vw,22px);font-weight:500;line-height:1.7;color:rgba(255,255,255,.95);}
-  .hero .kor-desc{margin-top:18px;font-size:clamp(14px,1.6vw,17px);line-height:1.9;color:rgba(255,255,255,.82);max-width:560px;}
+  .hero .kor-desc{margin-top:18px;font-size:clamp(14px,1.6vw,17px);line-height:1.9;color:rgba(255,255,255,.82);max-width:600px;}
   .hero-btns{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;}
   .btn-main{background:#fff;color:var(--purple-deep);padding:16px 34px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .2s,box-shadow .2s;}
   .btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.2);}
   .btn-ghost{border:1.5px solid rgba(255,255,255,.6);color:#fff;padding:16px 30px;border-radius:999px;font-weight:600;font-size:16px;transition:background .2s;}
   .btn-ghost:hover{background:rgba(255,255,255,.14);}
   .hero-logo{display:flex;justify-content:center;}
-  .hero-logo img{width:min(320px,80%);filter:brightness(0) invert(1) drop-shadow(0 20px 50px rgba(0,0,0,.25));}
+  .hero-logo img{width:auto;height:clamp(240px,24vw,320px);max-width:100%;object-fit:contain;filter:drop-shadow(0 20px 50px rgba(0,0,0,.25));}
   .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:12px;letter-spacing:.2em;z-index:2;animation:bob 2s infinite;}
   @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,10px);}}
   section{padding:clamp(70px,9vw,120px) 0;}
@@ -278,7 +278,7 @@
   #cta .btn-main{margin-top:36px;display:inline-block;}
   footer{background:#15121F;color:rgba(255,255,255,.65);padding:60px 0 50px;font-size:14px;}
   .foot-top{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
-  .foot-top img{height:40px;filter:brightness(0) invert(1);}
+  .foot-top img{height:36px;width:auto;max-width:100%;object-fit:contain;}
   .foot-info{line-height:1.9;}
   .foot-info strong{color:#fff;}
   .float-cta{position:fixed;right:22px;bottom:22px;z-index:90;background:var(--purple);color:#fff;padding:15px 24px;border-radius:999px;font-weight:700;box-shadow:0 10px 30px rgba(111,90,208,.4);display:flex;align-items:center;gap:8px;transition:transform .2s;}
@@ -330,6 +330,20 @@
     .device{height:min(640px,80vh);border-radius:34px;border-width:6px;}
     .d-info{grid-template-columns:1fr;}
   }
+
+  /* ===== v2: 로고 반응형 + 줄바꿈 ===== */
+  body{word-break:keep-all;overflow-wrap:break-word;}
+  .device{word-break:normal;}
+  p,li,td{text-wrap:pretty;}
+  h1,h2,h3,h4,.lead,.big,.kor-sub,.kor-desc,.sec-sub,.desc,.about-visual .sm,#cta p{text-wrap:balance;}
+  @media (max-width:980px){.logo img{height:36px;}}
+  @media (max-width:560px){.logo img{height:32px;}.foot-top img{height:28px;}}
+
+/* ===== v4: 히어로 꽉 찬 배경 ===== */
+.hero{background:linear-gradient(90deg,rgb(18,14,36) 0%,rgb(18,14,36) 0%,rgba(18,14,36,0) 49%),linear-gradient(180deg,rgb(18,14,36) 0%,rgba(18,14,36,0) 18%,rgba(18,14,36,0) 82%,rgb(18,14,36) 100%),url(images/hero-bg.jpg) right center/100vw auto no-repeat,rgb(18,14,36)!important;}
+.hero::before,.hero::after{display:none!important;}
+.hero .hero-logo{display:none!important;}
+@media(max-width:980px){.hero{background:linear-gradient(180deg,rgb(18,14,36) 0%,rgb(18,14,36) calc(100% - 128vw),rgba(18,14,36,0) calc(100% - 112vw)),url(images/hero-bg-m.jpg) center bottom/100% auto no-repeat,rgb(18,14,36)!important;padding-bottom:128vw!important;}}
 </style>
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -338,8 +352,8 @@
 <header id="header">
   <div class="wrap gnb">
     <a href="#top" class="logo">
-      <img class="white-logo" src="./images/logo-horizontal.png" alt="Hiionn 로고" width="1024" height="349">
-      <img class="color-logo" src="./images/logo-horizontal.png" alt="" aria-hidden="true" width="1024" height="349">
+      <img class="white-logo" src="./images/logo/logo-h-white.png" alt="Hiionn 로고" width="705" height="240">
+      <img class="color-logo" src="./images/logo/logo-h-purple.png" alt="" aria-hidden="true" width="705" height="240">
     </a>
     <nav class="gnb-menu" id="menu" aria-label="주요 메뉴">
       <a href="#why">Why Now</a>
@@ -359,14 +373,14 @@
     <div>
       <h1>Your Global Gateway<br><span class="light">to Korean Healthcare</span></h1>
       <p class="kor-sub">해외 환자 유치, <span class="hl">온라인과 오프라인을 하나로 잇는 통합 파트너</span></p>
-      <p class="kor-desc"><span class="hl">병의원은 진료에 집중하고,</span> 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 — <span class="hl">Hiionn이 전담합니다.</span> 피부·성형·치과·안과·정형외과·내과·한방·건강검진 등 <span class="hl">모든 진료 분야</span>의 해외 환자 유치를 설계합니다.</p>
+      <p class="kor-desc"><span class="hl">병원은 진료에 집중하고,</span> 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 — <span class="hl">Hiionn이 전담합니다.</span> 피부&#8288;·<wbr>성형&#8288;·<wbr>치과&#8288;·<wbr>안과&#8288;·<wbr>정형외과&#8288;·<wbr>내과&#8288;·<wbr>한방&#8288;·<wbr>건강검진 등 <span class="hl">모든 진료 분야</span>의 해외 환자 유치를 설계합니다.</p>
       <div class="hero-btns">
         <a href="#cta" class="btn-main">협업 미팅 요청하기</a>
         <a href="#demo" class="btn-ghost">미니프로그램 데모 체험 ↗</a>
       </div>
     </div>
     <div class="hero-logo">
-      <img src="./images/logo-symbol.png" alt="Hiionn 심볼 로고" width="1024" height="946">
+      <img src="./images/hero-bg.jpg" alt="Hiionn 마스코트" width="1039" height="960">
     </div>
   </div>
   <div class="scroll-hint">SCROLL</div>
@@ -377,7 +391,7 @@
     <div class="sec-head reveal">
       <div class="eng-label">Why Now</div>
       <h2 class="sec-title">지금, 해외 환자 유치를<br>시작해야 하는 이유</h2>
-      <p class="sec-sub">K-뷰티와 K-메디컬에 대한 관심이 전 세계로 확산되면서, <span class="hl">한국 병의원을 찾는 해외 환자의 흐름이 빠르게 커지고 있습니다.</span> 이제 해외 환자는 <span class="hl">방문 전 현지 플랫폼에서 병원과 시술 정보를 직접 검색하고 결정</span>합니다. <span class="hl-p">공식 채널과 신뢰 기반 콘텐츠가 없으면 선택지에서 멀어지는 시대</span>입니다.</p>
+      <p class="sec-sub">K-뷰티와 K-메디컬에 대한 관심이 전 세계로 확산되면서, <span class="hl">한국 병원을 찾는 해외 환자의 흐름이 빠르게 커지고 있습니다.</span> 이제 해외 환자는 <span class="hl">방문 전 현지 플랫폼에서 병원과 시술 정보를 직접 검색하고 결정</span>합니다. <span class="hl-p">공식 채널과 신뢰 기반 콘텐츠가 없으면 선택지에서 멀어지는 시대</span>입니다.</p>
     </div>
     <div class="why-grid">
       <div class="why-card reveal">
@@ -393,7 +407,7 @@
       <div class="why-card reveal">
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
         <h3>선점이 경쟁력입니다</h3>
-        <p><span class="hl">진입이 빠른 병의원</span>이 현지 검색 결과를 먼저 차지합니다. <span class="hl-p">늦어질수록 경쟁 병원이 노출을 선점</span>하게 됩니다.</p>
+        <p><span class="hl">진입이 빠른 병원</span>이 현지 검색 결과를 먼저 차지합니다. <span class="hl-p">늦어질수록 경쟁 병원이 노출을 선점</span>하게 됩니다.</p>
       </div>
     </div>
   </div>
@@ -404,13 +418,13 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="eng-label">About Hiionn</div>
-        <p class="lead">"진료는 <span class="hl-p">병의원</span>이, 해외 환자 유치는 <span class="hl-p">Hiionn</span>이."</p>
+        <p class="lead">"진료는 <span class="hl-p">병원</span>이, 해외 환자 유치는 <span class="hl-p">Hiionn</span>이."</p>
         <p>Hiionn은 (주)아크로모빌리티가 운영하는 <span class="hl">외국인 환자 유치 전문 브랜드</span>입니다. 해외 환자와 국내 의료기관을 연결하고, <span class="hl">유치 전 과정을 온라인·오프라인 양쪽에서</span> 지원합니다.</p>
-        <p>병의원은 복잡한 해외 계정 운영과 문의 응대에 <span class="hl">자원을 쓰지 않아도 됩니다.</span> 콘텐츠 제작, 계정 관리, 환자 문의 응대, 예약 연결까지 — <span class="hl">유치에 필요한 전 과정을 Hiionn이 맡고,</span> 병의원은 <span class="hl-p">확정된 예약 환자의 진료에만 집중</span>합니다.</p>
+        <p>병원은 복잡한 해외 계정 운영과 문의 응대에 <span class="hl">자원을 쓰지 않아도 됩니다.</span> 콘텐츠 제작, 계정 관리, 환자 문의 응대, 예약 연결까지 — <span class="hl">유치에 필요한 전 과정을 Hiionn이 맡고,</span> 병원은 <span class="hl-p">확정된 예약 환자의 진료에만 집중</span>합니다.</p>
       </div>
       <div class="about-visual reveal">
         <div class="big">온라인 홍보부터<br>오프라인 제휴까지,<br>하나의 창구로.</div>
-        <div class="sm">흩어진 해외 유치 활동을 <span class="hl">하나의 운영 체계로 통합</span>합니다. 환자 문의는 <span class="hl">전담 창구에서 응대</span>하고, 병의원과의 <span class="hl">예약 소통으로 연결</span>합니다.</div>
+        <div class="sm">흩어진 해외 유치 활동을 <span class="hl">하나의 운영 체계로 통합</span>합니다. 환자 문의는 <span class="hl">전담 창구에서 응대</span>하고, 병원과의 <span class="hl">예약 소통으로 연결</span>합니다.</div>
         <div class="about-tags">
           <span>공식 계정 위탁 운영</span><span>다국어 콘텐츠</span><span>환자 문의 응대</span><span>협회·단체 제휴</span><span>예약 연결</span>
         </div>
@@ -424,7 +438,7 @@
     <div class="sec-head center reveal">
       <div class="eng-label">Service Flow</div>
       <h2 class="sec-title">환자 유입부터 예약까지, 하나의 흐름</h2>
-      <p class="sec-sub">온라인과 오프라인에서 모은 환자 문의를 <span class="hl">전담 창구가 응대</span>하고, <span class="hl">병의원 예약으로 연결</span>합니다. 모든 길의 중심에는 <span class="hl-p">'문의 응대 → 예약 연결' 허브</span>가 있습니다.</p>
+      <p class="sec-sub">온라인과 오프라인에서 모은 환자 문의를 <span class="hl">전담 창구가 응대</span>하고, <span class="hl">병원 예약으로 연결</span>합니다. 모든 길의 중심에는 <span class="hl-p">'문의 응대 → 예약 연결' 허브</span>가 있습니다.</p>
     </div>
     <div class="flow-track reveal">
       <div class="flow-node"><div class="n">ONLINE</div><h4>공식 계정 운영</h4><p>해외 SNS 콘텐츠로 관심 유입</p></div>
@@ -433,9 +447,9 @@
       <div class="flow-arrow" aria-hidden="true">→</div>
       <div class="flow-node flow-hub"><div class="n">HUB</div><h4>문의 응대 (CS)</h4><p><span class="hl">Hiionn 전담 창구</span>가 상담</p></div>
       <div class="flow-arrow" aria-hidden="true">→</div>
-      <div class="flow-node"><div class="n">BOOKING</div><h4>예약 연결</h4><p>병의원과 예약 일정 확정</p></div>
+      <div class="flow-node"><div class="n">BOOKING</div><h4>예약 연결</h4><p>병원과 예약 일정 확정</p></div>
       <div class="flow-arrow" aria-hidden="true">→</div>
-      <div class="flow-node"><div class="n">CARE</div><h4>진료 · 사후관리</h4><p>병의원 진료 + 사후 소통</p></div>
+      <div class="flow-node"><div class="n">CARE</div><h4>진료 · 사후관리</h4><p>병원 진료 + 사후 소통</p></div>
     </div>
   </div>
 </section>
@@ -452,12 +466,12 @@
       <div class="model-content">
         <span class="model-tag">ONLINE · 공식 계정 위탁 운영</span>
         <h3>해외 공식 계정을 맡기고,<br>진료에 집중하세요</h3>
-        <p class="desc">병의원의 <span class="hl">공식 해외 SNS 계정을 위탁받아 운영</span>합니다. <span class="hl">중국·대만·베트남</span> 등 타깃 국가별로 현지 정서에 맞는 콘텐츠를 기획·제작하고, <span class="hl">전문가(KOL)와의 협업 콘텐츠</span>로 신뢰를 쌓습니다. 콘텐츠에서 발생한 문의는 <span class="hl-p">전담 창구가 응대해 예약으로 연결</span>합니다.</p>
+        <p class="desc">병원의 <span class="hl">공식 해외 SNS 계정을 위탁받아 운영</span>합니다. <span class="hl">중국·대만·베트남</span> 등 타깃 국가별로 현지 정서에 맞는 콘텐츠를 기획·제작하고, <span class="hl">전문가(KOL)와의 협업 콘텐츠</span>로 신뢰를 쌓습니다. 콘텐츠에서 발생한 문의는 <span class="hl-p">전담 창구가 응대해 예약으로 연결</span>합니다.</p>
         <ul class="model-steps">
           <li><span class="num">1</span><div class="txt"><b>공식 계정 구축·위탁</b><span>주요 해외 플랫폼에 공식 계정을 세우고 <span class="hl">운영을 위탁</span>받습니다.</span></div></li>
           <li><span class="num">2</span><div class="txt"><b>현지화 콘텐츠·전문가 협업</b><span><span class="hl">의료진의 전문성과 병원의 강점</span>을 현지 언어와 감성으로 전달합니다.</span></div></li>
           <li><span class="num">3</span><div class="txt"><b>계정 관리·검색 최적화</b><span>꾸준한 업로드와 <span class="hl">현지 키워드 관리</span>로 노출을 유지합니다.</span></div></li>
-          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span>유입된 문의를 <span class="hl">전담 창구가 상담</span>하고 병의원 예약으로 넘깁니다.</span></div></li>
+          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span>유입된 문의를 <span class="hl">전담 창구가 상담</span>하고 병원 예약으로 넘깁니다.</span></div></li>
         </ul>
       </div>
       <div class="model-media-wrap">
@@ -483,12 +497,12 @@
       <div class="model-content">
         <span class="model-tag">OFFLINE · 협회·단체 제휴</span>
         <h3>현지 네트워크로<br>신뢰받는 길을 엽니다</h3>
-        <p class="desc">해외 현지 에이전트와 <span class="hl">협회·단체 제휴</span>를 통해 환자를 모읍니다. 현지 단체 회원과 지역 사회에 <span class="hl">신뢰도 높은 의료 서비스</span>를 안내하고, 유입된 환자의 <span class="hl-p">문의 응대를 Hiionn이 수행해 병의원 예약으로 연결</span>합니다. <span class="hl">통역·안내 등 방문 편의 지원</span>도 함께 설계합니다.</p>
+        <p class="desc">해외 현지 에이전트와 <span class="hl">협회·단체 제휴</span>를 통해 환자를 모읍니다. 현지 단체 회원과 지역 사회에 <span class="hl">신뢰도 높은 의료 서비스</span>를 안내하고, 유입된 환자의 <span class="hl-p">문의 응대를 Hiionn이 수행해 병원 예약으로 연결</span>합니다. <span class="hl">통역·안내 등 방문 편의 지원</span>도 함께 설계합니다.</p>
         <ul class="model-steps">
           <li><span class="num">1</span><div class="txt"><b>현지 협회·단체 제휴</b><span><span class="hl">신뢰 기반의 현지 조직</span>과 협력 체계를 구축합니다.</span></div></li>
-          <li><span class="num">2</span><div class="txt"><b>환자·방문객 소개·유치</b><span>회원 및 지역 사회에 병의원을 <span class="hl">안내하고 모객</span>합니다.</span></div></li>
+          <li><span class="num">2</span><div class="txt"><b>환자·방문객 소개·유치</b><span>회원 및 지역 사회에 병원을 <span class="hl">안내하고 모객</span>합니다.</span></div></li>
           <li><span class="num">3</span><div class="txt"><b>통역·방문 편의 지원</b><span><span class="hl">상담·통역·방문 안내</span> 등 현지 환자의 편의를 돕습니다.</span></div></li>
-          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span><span class="hl">Hiionn 전담 창구</span>가 응대해 병의원 예약으로 연결합니다.</span></div></li>
+          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span><span class="hl">Hiionn 전담 창구</span>가 응대해 병원 예약으로 연결합니다.</span></div></li>
         </ul>
       </div>
     </div>
@@ -579,9 +593,9 @@
       <h2 class="sec-title">해외 환자의 여정, 처음부터 끝까지</h2>
     </div>
     <div class="journey-grid">
-      <div class="jcard reveal"><div class="step">01</div><h4>발견 · 관심</h4><p><span class="hl">현지 공식 계정과 제휴 안내</span>를 통해 병의원을 처음 접합니다.</p></div>
+      <div class="jcard reveal"><div class="step">01</div><h4>발견 · 관심</h4><p><span class="hl">현지 공식 계정과 제휴 안내</span>를 통해 병원을 처음 접합니다.</p></div>
       <div class="jcard reveal"><div class="step">02</div><h4>문의 · 상담</h4><p>전담 창구가 <span class="hl">모국어로</span> 궁금한 점을 풀고 예약 전 안내를 제공합니다.</p></div>
-      <div class="jcard reveal"><div class="step">03</div><h4>내원 · 진료</h4><p><span class="hl">확정된 일정</span>에 맞춰 병의원이 진료하고, 방문 편의를 지원합니다.</p></div>
+      <div class="jcard reveal"><div class="step">03</div><h4>내원 · 진료</h4><p><span class="hl">확정된 일정</span>에 맞춰 병원이 진료하고, 방문 편의를 지원합니다.</p></div>
       <div class="jcard reveal"><div class="step">04</div><h4>사후 · 재방문</h4><p>진료 후 소통과 만족 경험이 <span class="hl">재방문과 소개</span>로 이어집니다.</p></div>
     </div>
   </div>
@@ -592,11 +606,11 @@
     <div class="sec-head reveal">
       <div class="eng-label">Roles &amp; Responsibilities</div>
       <h2 class="sec-title">명확한 역할 분담</h2>
-      <p class="sec-sub">병의원은 <span class="hl">진료와 최소한의 협조</span>에 집중하고, <span class="hl-p">해외 유치의 번거로운 과정은 Hiionn이 전담</span>합니다.</p>
+      <p class="sec-sub">병원은 <span class="hl">진료와 최소한의 협조</span>에 집중하고, <span class="hl-p">해외 유치의 번거로운 과정은 Hiionn이 전담</span>합니다.</p>
     </div>
     <div class="reveal" style="overflow-x:auto;">
       <table class="rr-table">
-        <thead><tr><th scope="col">영역</th><th scope="col">Hiionn 담당</th><th scope="col">병의원 협조</th></tr></thead>
+        <thead><tr><th scope="col">영역</th><th scope="col">Hiionn 담당</th><th scope="col">병원 협조</th></tr></thead>
         <tbody>
           <tr><td>해외 공식 계정 운영</td><td class="hion">계정 구축·콘텐츠 제작·관리 전담</td><td>현장 촬영·기본 정보 협조</td></tr>
           <tr><td>전문가(KOL) 협업 콘텐츠</td><td class="hion">섭외·기획·제작 전담</td><td>방문·촬영 일정 협조</td></tr>
@@ -618,8 +632,8 @@
     </div>
     <div class="wh-grid">
       <div class="wh-card reveal"><div class="num">01</div><h4>온·오프라인 통합</h4><p>온라인 콘텐츠와 오프라인 제휴를 <span class="hl">한 체계로 엮어,</span> 어느 한쪽에 의존하지 않는 <span class="hl">안정적인 유입 구조</span>를 만듭니다.</p></div>
-      <div class="wh-card reveal"><div class="num">02</div><h4>문의 응대 전담</h4><p>환자 문의 응대를 <span class="hl">Hiionn이 직접 맡습니다.</span> 병의원은 <span class="hl">확정된 예약만</span> 받으면 되므로 <span class="hl">운영 부담이 크게 줄어듭니다.</span></p></div>
-      <div class="wh-card reveal"><div class="num">03</div><h4>준법·신뢰 기반</h4><p><span class="hl">외국인환자 유치업 등록</span> 기반으로 <span class="hl">의료법과 광고 심의 기준</span>을 지켜 운영하여, <span class="hl">병의원의 법적 부담</span>을 낮춥니다.</p></div>
+      <div class="wh-card reveal"><div class="num">02</div><h4>문의 응대 전담</h4><p>환자 문의 응대를 <span class="hl">Hiionn이 직접 맡습니다.</span> 병원은 <span class="hl">확정된 예약만</span> 받으면 되므로 <span class="hl">운영 부담이 크게 줄어듭니다.</span></p></div>
+      <div class="wh-card reveal"><div class="num">03</div><h4>준법·신뢰 기반</h4><p><span class="hl">외국인환자 유치업 등록</span> 기반으로 <span class="hl">의료법과 광고 심의 기준</span>을 지켜 운영하여, <span class="hl">병원의 법적 부담</span>을 낮춥니다.</p></div>
     </div>
   </div>
 </section>
@@ -631,13 +645,13 @@
       <h2 class="sec-title">자주 묻는 질문</h2>
     </div>
     <div class="reveal">
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">계정 운영 위탁은 어떤 방식으로 진행되나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>병의원의 공식 해외 SNS 계정을 위탁받아 <span class="hl">콘텐츠 기획·제작·업로드·관리를 Hiionn이 전담</span>합니다. 병의원은 <span class="hl">현장 촬영 협조와 기본 정보 제공</span> 정도만 하시면 됩니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">계정 운영 위탁은 어떤 방식으로 진행되나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>병원의 공식 해외 SNS 계정을 위탁받아 <span class="hl">콘텐츠 기획·제작·업로드·관리를 Hiionn이 전담</span>합니다. 병원은 <span class="hl">현장 촬영 협조와 기본 정보 제공</span> 정도만 하시면 됩니다.</p></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">미니프로그램 데모는 실제로 동작하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>소개서의 데모는 WeChat 미니프로그램의 고객 경험을 브라우저에서 미리 보여주기 위한 <span class="hl">클릭형 시연</span>입니다. <span class="hl-p">예시 데이터로 동작하며 실제 예약·결제·AI API와는 연동되지 않습니다.</span> 정식 구축 시 <span class="hl">실제 WeChat Pay·CS·예약 시스템</span>과 연결합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">특정 진료과만 가능한가요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>아닙니다. 피부·성형·치과·안과·정형외과·내과·한방·건강검진 등 <span class="hl-p">전 진료 분야</span>를 대상으로 하며, <span class="hl">과목 특성에 맞춰</span> 콘텐츠와 제휴 전략을 설계합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">환자 문의와 예약은 누가 담당하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p><span class="hl">Hiionn 전담 창구</span>가 환자 문의를 <span class="hl">모국어로 응대</span>하고, 병의원과의 예약 소통까지 연결합니다. 병의원은 <span class="hl">확정된 예약 일정만</span> 확인하시면 됩니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">특정 진료과만 가능한가요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>아닙니다. 피부&#8288;·<wbr>성형&#8288;·<wbr>치과&#8288;·<wbr>안과&#8288;·<wbr>정형외과&#8288;·<wbr>내과&#8288;·<wbr>한방&#8288;·<wbr>건강검진 등 <span class="hl-p">전 진료 분야</span>를 대상으로 하며, <span class="hl">과목 특성에 맞춰</span> 콘텐츠와 제휴 전략을 설계합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">환자 문의와 예약은 누가 담당하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p><span class="hl">Hiionn 전담 창구</span>가 환자 문의를 <span class="hl">모국어로 응대</span>하고, 병원과의 예약 소통까지 연결합니다. 병원은 <span class="hl">확정된 예약 일정만</span> 확인하시면 됩니다.</p></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">오프라인 제휴는 어떤 형태인가요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>해외 현지 에이전트 및 <span class="hl">협회·단체와의 제휴</span>를 통해 환자를 소개·유치하고, <span class="hl">통역·방문 안내</span> 등 편의를 지원합니다. 유입된 환자의 <span class="hl">응대와 예약 연결은 Hiionn이 수행</span>합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">의료광고 관련 규정은 어떻게 대응하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p><span class="hl">외국인환자 유치업 등록</span> 기반으로 <span class="hl">의료법과 의료광고 심의 기준</span>에 맞춰 콘텐츠를 제작합니다. 심의가 필요한 사항은 <span class="hl">병의원과 사전에 협의</span>합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">계약과 정산 조건은 어떻게 되나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>협력 범위(온라인·오프라인·응대 범위 등)를 <span class="hl">병의원 상황에 맞춰 선택</span>하실 수 있으며, 세부 조건은 <span class="hl">성과 기반으로 상담 시 협의</span>합니다. 계약서에 <span class="hl">역할과 책임을 명확히 명시</span>합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">의료광고 관련 규정은 어떻게 대응하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p><span class="hl">외국인환자 유치업 등록</span> 기반으로 <span class="hl">의료법과 의료광고 심의 기준</span>에 맞춰 콘텐츠를 제작합니다. 심의가 필요한 사항은 <span class="hl">병원과 사전에 협의</span>합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">계약과 정산 조건은 어떻게 되나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>협력 범위(온라인·오프라인·응대 범위 등)를 <span class="hl">병원 상황에 맞춰 선택</span>하실 수 있으며, 세부 조건은 <span class="hl">성과 기반으로 상담 시 협의</span>합니다. 계약서에 <span class="hl">역할과 책임을 명확히 명시</span>합니다.</p></div></div>
     </div>
   </div>
 </section>
@@ -646,7 +660,7 @@
   <div class="wrap">
     <div class="reveal">
       <h2>해외 환자 유치, 지금 함께<br>설계해 보시겠어요?</h2>
-      <p>협업 미팅을 통해 <span class="hl">병의원 맞춤 전략과 진행 방식</span>을 안내해 드립니다.</p>
+      <p>협업 미팅을 통해 <span class="hl">병원 맞춤 전략과 진행 방식</span>을 안내해 드립니다.</p>
       <a href="mailto:hiionn@acromobility.com" class="btn-main">협업 미팅 요청하기</a>
     </div>
   </div>
@@ -654,7 +668,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot-top"><img src="./images/logo-horizontal.png" alt="Hiionn 로고" width="1024" height="349" loading="lazy"></div>
+    <div class="foot-top"><img src="./images/logo/logo-h-white.png" alt="Hiionn 로고" width="705" height="240" loading="lazy"></div>
     <div class="foot-info">
       <strong>(주)아크로모빌리티</strong><br>
       인천광역시 서구 청라한내로72번길 7-15, 제3층 제304호 (청라동, 센트럴시티)<br>
