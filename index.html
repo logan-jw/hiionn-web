@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +42,8 @@
   #whyhion .hl,#whyhion .hl-p,
   footer .hl,footer .hl-p{color:#fff;font-weight:700;}
   .model-steps .txt .hl,.model-steps .txt .hl-p{display:inline;}
+  /* JS 미동작 시에도 본문이 보이도록 폴백 (reveal은 JS로 .on 부여) */
+  .no-js .reveal{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     .reveal{opacity:1;transform:none;transition:none;}
@@ -326,6 +328,7 @@
     .d-info{grid-template-columns:1fr;}
   }
 </style>
+<script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
 
@@ -677,8 +680,14 @@
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
     menu.classList.remove('open');burger.setAttribute('aria-expanded','false');
   }));
-  const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const revealAll=()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    /* 스크롤 없이 렌더링되는 환경(캡처·인쇄 등)에서도 본문이 보이도록 보정 */
+    window.addEventListener('load',()=>setTimeout(revealAll,1200));
+  }else{revealAll();}
+  window.addEventListener('beforeprint',revealAll);
   function toggleFaq(q){
     const item=q.parentElement,a=item.querySelector('.faq-a'),open=item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i=>{
