@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hiionn | 해외 환자 유치 온·오프라인 통합 파트너</title>
-<meta name="description" content="Hiionn(하이온)은 (주)아크로모빌리티가 운영하는 외국인 환자 유치 전문 브랜드입니다. 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 온·오프라인을 하나로 잇습니다.">
+<title>Hiionn | 해외 환자 유치 온·오프라인 통합 파트너 · 미니프로그램 데모</title>
+<meta name="description" content="Hiionn(하이온)은 (주)아크로모빌리티가 운영하는 외국인 환자 유치 전문 브랜드입니다. 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 온·오프라인을 하나로 잇고, WeChat 미니프로그램 고객 경험을 데모로 제공합니다.">
 <meta property="og:title" content="Hiionn | 해외 환자 유치 통합 파트너">
 <meta property="og:description" content="병의원은 진료에 집중하고, 해외 환자 유치는 Hiionn이 전담합니다.">
 <meta property="og:type" content="website">
@@ -12,12 +12,13 @@
 <link rel="icon" type="image/png" href="./images/logo-symbol.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --purple:#8F7AE5;--purple-deep:#6F5AD0;--purple-soft:#B9ABF0;
     --ink:#1E1A2E;--ink-soft:#4A4360;--bg:#F7F5FF;--white:#FFFFFF;--line:#E7E2F7;
     --radius:20px;--maxw:1180px;
+    --blue:#6F5AD0;--d-line:#e8edf5;--d-muted:#738098;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -31,25 +32,40 @@
   .sec-sub{margin-top:16px;color:var(--ink-soft);font-size:clamp(15px,1.6vw,18px);line-height:1.8;}
   .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
   .reveal.on{opacity:1;transform:none;}
+  /* 본문 강조: hl = 진한 강조, hl-p = 핵심 포인트 강조 */
+  .hl{font-weight:700;color:var(--ink);}
+  .hl-p{font-weight:700;color:var(--purple-deep);}
+  /* 어두운/컬러 배경 영역에서는 흰색으로 강조 */
+  .hero .hl,.hero .hl-p,
+  #cta .hl,#cta .hl-p,
+  .about-visual .hl,.about-visual .hl-p,
+  #whyhion .hl,#whyhion .hl-p,
+  footer .hl,footer .hl-p{color:#fff;font-weight:700;}
+  .model-steps .txt .hl,.model-steps .txt .hl-p{display:inline;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .scroll-hint{animation:none;}
+  }
   header{position:fixed;top:0;left:0;width:100%;z-index:100;transition:all .3s ease;padding:16px 0;}
   header.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(111,90,208,.08);padding:10px 0;}
   .gnb{display:flex;align-items:center;justify-content:space-between;}
   .logo img{height:40px;width:auto;}
   .logo .white-logo{display:block;filter:brightness(0) invert(1);} .logo .color-logo{display:none;}
   header.scrolled .logo .white-logo{display:none;} header.scrolled .logo .color-logo{display:block;}
-  .gnb-menu{display:flex;gap:30px;align-items:center;}
-  .gnb-menu a{font-size:15px;font-weight:500;color:rgba(255,255,255,.9);transition:color .2s;}
+  .gnb-menu{display:flex;gap:24px;align-items:center;}
+  .gnb-menu a{font-size:15px;font-weight:500;color:rgba(255,255,255,.9);transition:color .2s;white-space:nowrap;}
   header.scrolled .gnb-menu a{color:var(--ink-soft);}
   .gnb-menu a:hover{color:var(--purple);}
   .gnb-cta{background:var(--purple);color:#fff!important;padding:11px 22px;border-radius:999px;font-weight:600!important;}
   .gnb-cta:hover{background:var(--purple-deep);}
-  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
-  .burger span{width:26px;height:2px;background:#fff;border-radius:2px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px;}
+  .burger span{width:26px;height:2px;background:#fff;border-radius:2px;display:block;}
   header.scrolled .burger span{background:var(--ink);}
   .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#6F5AD0 0%,#8F7AE5 55%,#A594EC 100%);color:#fff;}
   .hero::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);top:-180px;right:-120px;}
   .hero::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);bottom:-140px;left:-80px;}
-  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;width:100%;}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;width:100%;padding:120px 0 90px;}
   .hero h1{font-size:clamp(32px,5.4vw,64px);font-weight:800;line-height:1.1;letter-spacing:-.02em;}
   .hero h1 .light{font-weight:400;opacity:.92;}
   .hero .kor-sub{margin-top:24px;font-size:clamp(17px,2vw,22px);font-weight:500;line-height:1.7;color:rgba(255,255,255,.95);}
@@ -91,9 +107,10 @@
   .flow-arrow{display:flex;align-items:center;justify-content:center;color:var(--purple-soft);font-size:26px;font-weight:300;padding:0 4px;}
   .flow-hub{border:2px solid var(--purple);box-shadow:0 10px 30px rgba(143,122,229,.2);}
   .flow-hub .n{color:var(--purple-deep);}
-  .model-block{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:90px;}
+
+  /* ===== Business model blocks ===== */
+  .model-block{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,48px);align-items:center;margin-bottom:clamp(56px,8vw,90px);}
   .model-block:last-child{margin-bottom:0;}
-  .model-block.rev .model-media-wrap{order:2;}
   .model-tag{display:inline-block;background:var(--bg);color:var(--purple-deep);font-weight:700;font-size:13px;padding:7px 16px;border-radius:999px;letter-spacing:.08em;margin-bottom:18px;}
   .model-block h3{font-size:clamp(22px,2.8vw,32px);font-weight:800;line-height:1.3;margin-bottom:16px;letter-spacing:-.01em;}
   .model-block .desc{color:var(--ink-soft);margin-bottom:26px;line-height:1.9;}
@@ -102,16 +119,19 @@
   .model-steps .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;font-family:'Poppins';font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
   .model-steps .txt b{display:block;font-weight:700;font-size:15px;}
   .model-steps .txt span{font-size:14px;color:var(--ink-soft);}
-  .model-media{border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(111,90,208,.18);background:#F0ECFF;}
-  .model-media img{width:100%;height:100%;object-fit:cover;}
-  .media-cap{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:10px;}
+  /* 이미지: 원본 비율 유지 + 반응형 폭 */
+  .model-media{border-radius:clamp(14px,2vw,24px);overflow:hidden;box-shadow:0 18px 50px rgba(111,90,208,.18);background:#F0ECFF;}
+  .model-media img{width:100%;height:auto;display:block;}
+
+  /* ===== Content strategy cards ===== */
   #ctype{background:var(--bg);}
   .ct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .ct-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform .3s,box-shadow .3s;}
+  .ct-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;}
   .ct-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(111,90,208,.14);}
-  .ct-card .thumb{aspect-ratio:16/9;overflow:hidden;background:#111;}
-  .ct-card .thumb img{width:100%;height:100%;object-fit:cover;}
-  .ct-card .body{padding:24px;}
+  /* 와이드 스크린샷을 잘라내지 않고 전체를 보여줌 */
+  .ct-card .thumb{overflow:hidden;background:#F4F1FF;display:flex;align-items:center;justify-content:center;padding:10px;}
+  .ct-card .thumb img{width:100%;height:auto;display:block;border-radius:8px;}
+  .ct-card .body{padding:24px;flex:1;}
   .ct-card .tag{font-size:12px;font-weight:700;color:var(--purple);letter-spacing:.06em;}
   .ct-card h4{font-size:18px;font-weight:700;margin:8px 0 10px;}
   .ct-card p{font-size:14px;color:var(--ink-soft);line-height:1.75;}
@@ -128,6 +148,112 @@
   .rr-table tbody tr:nth-child(even){background:var(--bg);}
   .rr-table td:first-child{font-weight:600;}
   .rr-table .hion{color:var(--purple-deep);font-weight:700;}
+
+  /* ===== 미니프로그램 데모 섹션 ===== */
+  #demo{background:linear-gradient(160deg,#F2EEFF 0%,#FFFFFF 60%);}
+  .demo-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px minmax(0,1fr);gap:40px;align-items:center;}
+  .demo-side h3{font-size:clamp(20px,2.4vw,28px);font-weight:800;line-height:1.3;letter-spacing:-.02em;margin-bottom:14px;}
+  .demo-side p{color:var(--ink-soft);font-size:14px;line-height:1.9;}
+  .demo-scenarios{margin-top:28px;display:flex;flex-direction:column;gap:12px;}
+  .demo-scenarios button{display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;transition:border-color .2s,transform .2s;font-size:14px;color:var(--ink-soft);font-family:inherit;width:100%;}
+  .demo-scenarios button:hover{border-color:var(--purple);transform:translateY(-2px);}
+  .demo-scenarios .idx{font-family:'Poppins';font-weight:800;color:var(--purple);}
+  .demo-scenarios strong{flex:1;color:var(--ink);font-weight:600;}
+  .demo-steps-list button{cursor:default;}
+  .demo-steps-list button.cur{border-color:var(--purple);background:#FBFAFF;}
+  .demo-note{margin-top:24px;font-size:12px;color:var(--d-muted);line-height:1.9;}
+  /* phone */
+  .device{background:#fff;border:7px solid #fff;border-radius:42px;box-shadow:0 25px 80px rgba(37,66,105,.2),0 0 0 1px #d4ddeb;overflow:hidden;height:clamp(600px,78vh,760px);display:flex;flex-direction:column;position:relative;font-family:'Noto Sans SC','Noto Sans KR',sans-serif;width:100%;max-width:390px;margin:0 auto;}
+  .d-status{height:32px;flex-shrink:0;padding:7px 22px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;color:var(--ink);}
+  .d-bar{height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:14px;font-weight:650;color:var(--ink);}
+  .d-capsule{border:1px solid #e1e5ec;padding:3px 11px;border-radius:20px;letter-spacing:2px;font-size:13px;}
+  .d-banner{font-size:11px;background:#f4f2fb;text-align:center;color:#8591a4;padding:7px 0;flex-shrink:0;}
+  .d-main{overflow-y:auto;flex:1;background:#fff;scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
+  .d-nav{display:flex;border-top:1px solid var(--d-line);padding:9px 3px 14px;background:#fff;flex-shrink:0;}
+  .d-nav button{flex:1;font-size:11px;color:#939dae;display:flex;align-items:center;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;font-family:inherit;}
+  .d-nav button.active{color:var(--blue);font-weight:700;}
+  .d-nav .dicon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .d-pad{padding:18px;}
+  .d-home-head{padding:18px 18px 12px;display:flex;justify-content:space-between;align-items:center;}
+  .d-brand{font-size:24px;font-weight:800;letter-spacing:-1px;color:var(--blue);}
+  .d-loc{font-size:12px;color:#7c879a;display:flex;align-items:center;gap:4px;}
+  .d-loc svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;}
+  /* 데모 히어로: 이미지 배경 */
+  .d-hero{margin:0 16px;border-radius:16px;overflow:hidden;position:relative;padding:22px;color:var(--ink);isolation:isolate;}
+  .d-hero img.bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  .d-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.72) 55%,rgba(255,255,255,.35) 100%);z-index:-1;}
+  .d-hero .ov{font-size:10px;letter-spacing:2px;color:var(--blue);font-weight:700;}
+  .d-hero h2{font-size:22px;letter-spacing:-.6px;line-height:1.4;margin:10px 0 6px;color:var(--ink);}
+  .d-hero p{font-size:12px;color:#536a87;margin:0 0 14px;}
+  .d-hero button{background:var(--blue);color:#fff;font-size:12px;padding:9px 13px;border-radius:8px;border:0;cursor:pointer;font-family:inherit;}
+  .d-short{display:grid;grid-template-columns:repeat(4,1fr);padding:20px 10px 16px;gap:3px;}
+  .d-short button{font-size:12px;display:flex;align-items:center;flex-direction:column;gap:9px;background:none;border:0;cursor:pointer;color:var(--ink);font-family:inherit;}
+  .d-tile{height:48px;width:48px;border-radius:15px;display:grid;place-items:center;background:#EDE7FF;color:var(--blue);}
+  .d-short button:nth-child(2) .d-tile{background:#e8f6f4;color:#278e85;}
+  .d-short button:nth-child(3) .d-tile{background:#f1edff;color:#8061c3;}
+  .d-short button:nth-child(4) .d-tile{background:#fff2e7;color:#c08344;}
+  .d-ai-strip{margin:0 16px 20px;border:1px solid #dce6fa;border-radius:13px;background:linear-gradient(100deg,#f0f5ff,#fafcff);padding:14px;display:flex;width:calc(100% - 32px);align-items:center;gap:10px;text-align:left;cursor:pointer;font-family:inherit;}
+  .d-ai-sym{background:var(--blue);color:#fff;display:grid;place-items:center;height:35px;width:35px;border-radius:12px;font-size:20px;flex:none;}
+  .d-ai-strip strong{display:block;font-size:13px;}.d-ai-strip small{display:block;font-size:11px;color:#8794a9;margin-top:3px;}
+  .d-sec-head{display:flex;justify-content:space-between;align-items:center;margin:0 18px 12px;}
+  .d-sec-head h3{font-size:17px;margin:0;color:var(--ink);}
+  .d-sec-head button{font-size:11px;color:#8994a7;background:none;border:0;cursor:pointer;font-family:inherit;}
+  .d-cards{padding:0 16px 18px;display:grid;gap:14px;}
+  .d-card{width:100%;border:1px solid var(--d-line);border-radius:14px;overflow:hidden;background:#fff;text-align:left;padding:0;cursor:pointer;font-family:inherit;}
+  /* 사진 썸네일 */
+  .d-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:#EDE7FF;}
+  .d-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .d-thumb .cap{position:absolute;left:12px;bottom:10px;color:#fff;font-size:11px;letter-spacing:2px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.5);}
+  .d-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,26,46,.45),transparent 55%);}
+  .d-card-body{padding:14px;}
+  .d-badge{background:#EDE7FF;color:var(--blue);font-size:10px;padding:4px 7px;border-radius:5px;display:inline-block;}
+  .d-badge.green{background:#eaf7f2;color:#36856d;}
+  .d-card-body h3{font-size:15px;margin:8px 0;color:var(--ink);}
+  .d-card-body p{font-size:12px;color:#8390a5;margin:5px 0;line-height:1.6;}
+  .d-price{font-size:18px;font-weight:700;color:var(--blue);}
+  .d-price small{font-size:11px;font-weight:400;color:#8995a9;}
+  .d-price del{font-size:12px;font-weight:400;color:#a7afbd;margin-left:8px;}
+  .d-ptitle{padding:18px 18px 12px;display:flex;align-items:center;gap:12px;}
+  .d-ptitle button{padding:0;background:none;border:0;cursor:pointer;display:grid;place-items:center;}
+  .d-ptitle svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:1.7;}
+  .d-ptitle h1{font-size:19px;margin:0;color:var(--ink);}
+  .d-ptitle .side{margin-left:auto;font-size:11px;color:#8d99aa;}
+  .d-notice{background:#f5f4fb;color:#77859b;padding:12px 14px;font-size:12px;line-height:1.8;border-radius:10px;margin:0 16px 16px;}
+  .d-cover{margin:0 16px;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:16/9;}
+  .d-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+  .d-cover .cap{position:absolute;left:14px;bottom:12px;color:#fff;font-size:12px;letter-spacing:2px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.5);}
+  .d-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,26,46,.5),transparent 60%);}
+  .d-detail{padding:18px;}
+  .d-detail h2{font-size:22px;margin:10px 0;color:var(--ink);}
+  .d-detail .p{color:#7d8ba1;font-size:13px;line-height:1.9;}
+  .d-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;}
+  .d-info-box{background:#f6f5fc;padding:13px;border-radius:10px;}
+  .d-info-box span{font-size:11px;color:#8996aa;display:block;margin-bottom:6px;}
+  .d-info-box strong{font-size:13px;font-weight:500;color:var(--ink);}
+  .d-actionbar{position:sticky;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);padding:13px 16px;display:flex;gap:10px;border-top:1px solid var(--d-line);}
+  .d-btn{border-radius:10px;padding:13px 16px;font-size:14px;text-align:center;border:0;cursor:pointer;font-family:inherit;}
+  .d-primary{background:var(--blue);color:#fff;font-weight:600;flex:1;}
+  .d-secondary{background:#EDE7FF;color:var(--blue);}
+  .d-chat{padding:16px;display:flex;flex-direction:column;gap:12px;}
+  .d-msg{max-width:80%;padding:11px 14px;border-radius:14px;font-size:13px;line-height:1.7;}
+  .d-msg.bot{background:#F2EEFF;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px;}
+  .d-msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+  .d-chat-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .d-chat-btns button{background:#fff;border:1px solid var(--blue);color:var(--blue);font-size:12px;padding:8px 12px;border-radius:999px;cursor:pointer;font-family:inherit;}
+  .d-quick{padding:0 16px 14px;display:flex;flex-wrap:wrap;gap:8px;}
+  .d-quick button{background:#F2EEFF;color:var(--blue);font-size:12px;padding:8px 12px;border-radius:999px;border:0;cursor:pointer;font-family:inherit;}
+  .d-done{padding:40px 20px;text-align:center;}
+  .d-done .ok{width:72px;height:72px;border-radius:50%;background:#eaf7f2;color:#36856d;display:grid;place-items:center;margin:0 auto 18px;font-size:38px;}
+  .d-done h2{font-size:21px;color:var(--ink);margin-bottom:8px;}
+  .d-done p{font-size:13px;color:#7d8ba1;line-height:1.9;}
+  .d-order{background:#f6f5fc;border-radius:12px;padding:16px;margin:18px 16px;text-align:left;font-size:13px;color:var(--ink);}
+  .d-order .r{display:flex;justify-content:space-between;padding:6px 0;gap:12px;}
+  .d-order .r span{color:#8996aa;flex:none;}
+  .d-order .r b{text-align:right;}
+  .d-opt{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 14px;}
+  .d-opt button{background:#f4f3fa;border:1px solid var(--d-line);color:#7c8a9e;font-size:13px;padding:9px 14px;border-radius:8px;cursor:pointer;font-family:inherit;}
+  .d-opt button.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+
   #whyhion{background:linear-gradient(135deg,#6F5AD0,#8F7AE5);color:#fff;}
   #whyhion .eng-label{color:rgba(255,255,255,.85);} #whyhion .sec-title{color:#fff;}
   .wh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px;}
@@ -153,30 +279,51 @@
   .float-cta{position:fixed;right:22px;bottom:22px;z-index:90;background:var(--purple);color:#fff;padding:15px 24px;border-radius:999px;font-weight:700;box-shadow:0 10px 30px rgba(111,90,208,.4);display:flex;align-items:center;gap:8px;transition:transform .2s;}
   .float-cta:hover{transform:translateY(-4px);}
   .float-cta svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;}
+
+  /* ===== 반응형: 데스크톱 → 태블릿 → 모바일 ===== */
+  @media (max-width:1180px){
+    .demo-layout{grid-template-columns:minmax(0,1fr) 360px;gap:32px;}
+    .demo-side.last{display:none;}
+  }
   @media (max-width:980px){
-    .hero-inner{grid-template-columns:1fr;text-align:center;}
+    .hero-inner{grid-template-columns:1fr;text-align:center;padding:110px 0 80px;}
     .hero-logo{display:none;}
     .hero-btns{justify-content:center;}
     .hero .kor-desc{margin-left:auto;margin-right:auto;}
-    .about-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;gap:36px;}
+    .about-visual{padding:40px 32px;}
     .model-block{grid-template-columns:1fr;gap:28px;}
-    .model-block.rev .model-media-wrap{order:0;}
-    .why-grid,.wh-grid,.ct-grid{grid-template-columns:1fr;}
+    /* 태블릿 이하: 이미지가 항상 텍스트보다 먼저 */
+    .model-block .model-media-wrap{order:0;}
+    .model-block .model-content{order:1;}
+    .why-grid,.wh-grid{grid-template-columns:1fr;}
+    .ct-grid{grid-template-columns:1fr;gap:20px;}
     .journey-grid{grid-template-columns:1fr 1fr;}
+    /* 데모: 폰 + 시나리오 2단 → 1단 */
+    .demo-layout{grid-template-columns:1fr;max-width:420px;margin:0 auto;gap:34px;}
+    .demo-side.last{display:none;}
+    .device{order:-1;}
   }
   @media (max-width:768px){
-    .gnb-menu{position:fixed;top:0;right:-100%;height:100vh;width:72%;max-width:300px;background:#fff;flex-direction:column;justify-content:center;gap:28px;box-shadow:-10px 0 40px rgba(0,0,0,.1);transition:right .3s ease;}
+    .gnb-menu{position:fixed;top:0;right:-100%;height:100vh;width:74%;max-width:320px;background:#fff;flex-direction:column;justify-content:center;gap:24px;box-shadow:-10px 0 40px rgba(0,0,0,.1);transition:right .3s ease;overflow-y:auto;padding:40px 0;}
     .gnb-menu.open{right:0;}
-    .gnb-menu a{color:var(--ink)!important;font-size:18px;}
+    .gnb-menu a{color:var(--ink)!important;font-size:17px;}
     .burger{display:flex;}
     .flow-track{flex-direction:column;}
     .flow-arrow{transform:rotate(90deg);padding:6px 0;}
+    .rr-table th,.rr-table td{padding:14px 16px;font-size:14px;}
+    .float-cta{padding:13px 20px;font-size:14px;right:16px;bottom:16px;}
   }
-  @media (max-width:430px){
+  @media (max-width:560px){
     .journey-grid{grid-template-columns:1fr;}
-    .rr-table th,.rr-table td{padding:12px 14px;font-size:13px;}
     .hero-btns{flex-direction:column;}
     .btn-main,.btn-ghost{text-align:center;}
+    .rr-table th,.rr-table td{padding:12px 14px;font-size:13px;}
+    .ct-card .thumb{padding:8px;}
+    .about-visual{padding:34px 24px;}
+    .demo-layout{max-width:100%;}
+    .device{height:min(640px,80vh);border-radius:34px;border-width:6px;}
+    .d-info{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -185,18 +332,19 @@
 <header id="header">
   <div class="wrap gnb">
     <a href="#top" class="logo">
-      <img class="white-logo" src="./images/logo-horizontal.png" alt="Hiionn 로고">
-      <img class="color-logo" src="./images/logo-horizontal.png" alt="Hiionn 로고">
+      <img class="white-logo" src="./images/logo-horizontal.png" alt="Hiionn 로고" width="1024" height="349">
+      <img class="color-logo" src="./images/logo-horizontal.png" alt="" aria-hidden="true" width="1024" height="349">
     </a>
-    <nav class="gnb-menu" id="menu">
+    <nav class="gnb-menu" id="menu" aria-label="주요 메뉴">
       <a href="#why">Why Now</a>
       <a href="#about">About</a>
       <a href="#online">온라인</a>
       <a href="#offline">오프라인</a>
+      <a href="#demo">미니프로그램 데모</a>
       <a href="#faq">FAQ</a>
       <a href="#cta" class="gnb-cta">협업 문의</a>
     </nav>
-    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    <button class="burger" id="burger" aria-label="메뉴 열기" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -204,15 +352,15 @@
   <div class="wrap hero-inner">
     <div>
       <h1>Your Global Gateway<br><span class="light">to Korean Healthcare</span></h1>
-      <p class="kor-sub">해외 환자 유치, 온라인과 오프라인을 하나로 잇는 통합 파트너</p>
-      <p class="kor-desc">병의원은 진료에 집중하고, 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 — Hiionn이 전담합니다. 피부·성형·치과·안과·정형외과·내과·한방·건강검진 등 모든 진료 분야의 해외 환자 유치를 설계합니다.</p>
+      <p class="kor-sub">해외 환자 유치, <span class="hl">온라인과 오프라인을 하나로 잇는 통합 파트너</span></p>
+      <p class="kor-desc"><span class="hl">병의원은 진료에 집중하고,</span> 해외 공식 계정 운영부터 환자 문의 응대, 예약 연결까지 — <span class="hl">Hiionn이 전담합니다.</span> 피부·성형·치과·안과·정형외과·내과·한방·건강검진 등 <span class="hl">모든 진료 분야</span>의 해외 환자 유치를 설계합니다.</p>
       <div class="hero-btns">
         <a href="#cta" class="btn-main">협업 미팅 요청하기</a>
-        <a href="#flow" class="btn-ghost">서비스 흐름 보기</a>
+        <a href="#demo" class="btn-ghost">미니프로그램 데모 체험 ↗</a>
       </div>
     </div>
     <div class="hero-logo">
-      <img src="./images/logo-symbol.png" alt="Hiionn 심볼 로고">
+      <img src="./images/logo-symbol.png" alt="Hiionn 심볼 로고" width="1024" height="946">
     </div>
   </div>
   <div class="scroll-hint">SCROLL</div>
@@ -223,23 +371,23 @@
     <div class="sec-head reveal">
       <div class="eng-label">Why Now</div>
       <h2 class="sec-title">지금, 해외 환자 유치를<br>시작해야 하는 이유</h2>
-      <p class="sec-sub">K-뷰티와 K-메디컬에 대한 관심이 전 세계로 확산되면서, 한국 병의원을 찾는 해외 환자의 흐름이 빠르게 커지고 있습니다. 이제 해외 환자는 방문 전 현지 플랫폼에서 병원과 시술 정보를 직접 검색하고 결정합니다. 공식 채널과 신뢰 기반 콘텐츠가 없으면 선택지에서 멀어지는 시대입니다.</p>
+      <p class="sec-sub">K-뷰티와 K-메디컬에 대한 관심이 전 세계로 확산되면서, <span class="hl">한국 병의원을 찾는 해외 환자의 흐름이 빠르게 커지고 있습니다.</span> 이제 해외 환자는 <span class="hl">방문 전 현지 플랫폼에서 병원과 시술 정보를 직접 검색하고 결정</span>합니다. <span class="hl-p">공식 채널과 신뢰 기반 콘텐츠가 없으면 선택지에서 멀어지는 시대</span>입니다.</p>
     </div>
     <div class="why-grid">
       <div class="why-card reveal">
-        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
         <h3>검색이 곧 관문입니다</h3>
-        <p>해외 환자는 현지 SNS·리뷰 플랫폼에서 먼저 검색합니다. 공식 계정과 콘텐츠가 있어야 비로소 '검토 대상'에 포함됩니다.</p>
+        <p>해외 환자는 <span class="hl">현지 SNS·리뷰 플랫폼에서 먼저 검색</span>합니다. 공식 계정과 콘텐츠가 있어야 비로소 <span class="hl">'검토 대상'에 포함</span>됩니다.</p>
       </div>
       <div class="why-card reveal">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
         <h3>신뢰가 선택을 만듭니다</h3>
-        <p>결과 이미지만으로 병원을 고르지 않습니다. 의료진의 전문성과 병원의 신뢰성을 콘텐츠로 확인시켜야 방문으로 이어집니다.</p>
+        <p>결과 이미지만으로 병원을 고르지 않습니다. <span class="hl">의료진의 전문성과 병원의 신뢰성</span>을 콘텐츠로 확인시켜야 <span class="hl">방문으로 이어집니다.</span></p>
       </div>
       <div class="why-card reveal">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
         <h3>선점이 경쟁력입니다</h3>
-        <p>진입이 빠른 병의원이 현지 검색 결과를 먼저 차지합니다. 늦어질수록 경쟁 병원이 노출을 선점하게 됩니다.</p>
+        <p><span class="hl">진입이 빠른 병의원</span>이 현지 검색 결과를 먼저 차지합니다. <span class="hl-p">늦어질수록 경쟁 병원이 노출을 선점</span>하게 됩니다.</p>
       </div>
     </div>
   </div>
@@ -250,13 +398,13 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="eng-label">About Hiionn</div>
-        <p class="lead">"진료는 병의원이, 해외 환자 유치는 Hiionn이."</p>
-        <p>Hiionn은 (주)아크로모빌리티가 운영하는 외국인 환자 유치 전문 브랜드입니다. 해외 환자와 국내 의료기관을 연결하고, 유치 전 과정을 온라인·오프라인 양쪽에서 지원합니다.</p>
-        <p>병의원은 복잡한 해외 계정 운영과 문의 응대에 자원을 쓰지 않아도 됩니다. 콘텐츠 제작, 계정 관리, 환자 문의 응대, 예약 연결까지 — 유치에 필요한 전 과정을 Hiionn이 맡고, 병의원은 확정된 예약 환자의 진료에만 집중합니다.</p>
+        <p class="lead">"진료는 <span class="hl-p">병의원</span>이, 해외 환자 유치는 <span class="hl-p">Hiionn</span>이."</p>
+        <p>Hiionn은 (주)아크로모빌리티가 운영하는 <span class="hl">외국인 환자 유치 전문 브랜드</span>입니다. 해외 환자와 국내 의료기관을 연결하고, <span class="hl">유치 전 과정을 온라인·오프라인 양쪽에서</span> 지원합니다.</p>
+        <p>병의원은 복잡한 해외 계정 운영과 문의 응대에 <span class="hl">자원을 쓰지 않아도 됩니다.</span> 콘텐츠 제작, 계정 관리, 환자 문의 응대, 예약 연결까지 — <span class="hl">유치에 필요한 전 과정을 Hiionn이 맡고,</span> 병의원은 <span class="hl-p">확정된 예약 환자의 진료에만 집중</span>합니다.</p>
       </div>
       <div class="about-visual reveal">
         <div class="big">온라인 홍보부터<br>오프라인 제휴까지,<br>하나의 창구로.</div>
-        <div class="sm">흩어진 해외 유치 활동을 하나의 운영 체계로 통합합니다. 환자 문의는 전담 창구에서 응대하고, 병의원과의 예약 소통으로 연결합니다.</div>
+        <div class="sm">흩어진 해외 유치 활동을 <span class="hl">하나의 운영 체계로 통합</span>합니다. 환자 문의는 <span class="hl">전담 창구에서 응대</span>하고, 병의원과의 <span class="hl">예약 소통으로 연결</span>합니다.</div>
         <div class="about-tags">
           <span>공식 계정 위탁 운영</span><span>다국어 콘텐츠</span><span>환자 문의 응대</span><span>협회·단체 제휴</span><span>예약 연결</span>
         </div>
@@ -270,17 +418,17 @@
     <div class="sec-head center reveal">
       <div class="eng-label">Service Flow</div>
       <h2 class="sec-title">환자 유입부터 예약까지, 하나의 흐름</h2>
-      <p class="sec-sub">온라인과 오프라인에서 모은 환자 문의를 전담 창구가 응대하고, 병의원 예약으로 연결합니다. 모든 길의 중심에는 '문의 응대 → 예약 연결' 허브가 있습니다.</p>
+      <p class="sec-sub">온라인과 오프라인에서 모은 환자 문의를 <span class="hl">전담 창구가 응대</span>하고, <span class="hl">병의원 예약으로 연결</span>합니다. 모든 길의 중심에는 <span class="hl-p">'문의 응대 → 예약 연결' 허브</span>가 있습니다.</p>
     </div>
     <div class="flow-track reveal">
       <div class="flow-node"><div class="n">ONLINE</div><h4>공식 계정 운영</h4><p>해외 SNS 콘텐츠로 관심 유입</p></div>
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
       <div class="flow-node"><div class="n">OFFLINE</div><h4>제휴 모객</h4><p>에이전트·협회·단체 소개</p></div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node flow-hub"><div class="n">HUB</div><h4>문의 응대 (CS)</h4><p>Hiionn 전담 창구가 상담</p></div>
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-node flow-hub"><div class="n">HUB</div><h4>문의 응대 (CS)</h4><p><span class="hl">Hiionn 전담 창구</span>가 상담</p></div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
       <div class="flow-node"><div class="n">BOOKING</div><h4>예약 연결</h4><p>병의원과 예약 일정 확정</p></div>
-      <div class="flow-arrow">→</div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
       <div class="flow-node"><div class="n">CARE</div><h4>진료 · 사후관리</h4><p>병의원 진료 + 사후 소통</p></div>
     </div>
   </div>
@@ -293,38 +441,48 @@
       <h2 class="sec-title">두 개의 길, 하나의 예약 창구</h2>
     </div>
 
+    <!-- ONLINE: 텍스트 → 이미지 -->
     <div class="model-block reveal">
       <div class="model-content">
         <span class="model-tag">ONLINE · 공식 계정 위탁 운영</span>
         <h3>해외 공식 계정을 맡기고,<br>진료에 집중하세요</h3>
-        <p class="desc">병의원의 공식 해외 SNS 계정을 위탁받아 운영합니다. 중국·대만·베트남 등 타깃 국가별로 현지 정서에 맞는 콘텐츠를 기획·제작하고, 전문가(KOL)와의 협업 콘텐츠로 신뢰를 쌓습니다. 콘텐츠에서 발생한 문의는 전담 창구가 응대해 예약으로 연결합니다.</p>
+        <p class="desc">병의원의 <span class="hl">공식 해외 SNS 계정을 위탁받아 운영</span>합니다. <span class="hl">중국·대만·베트남</span> 등 타깃 국가별로 현지 정서에 맞는 콘텐츠를 기획·제작하고, <span class="hl">전문가(KOL)와의 협업 콘텐츠</span>로 신뢰를 쌓습니다. 콘텐츠에서 발생한 문의는 <span class="hl-p">전담 창구가 응대해 예약으로 연결</span>합니다.</p>
         <ul class="model-steps">
-          <li><span class="num">1</span><div class="txt"><b>공식 계정 구축·위탁</b><span>주요 해외 플랫폼에 공식 계정을 세우고 운영을 위탁받습니다.</span></div></li>
-          <li><span class="num">2</span><div class="txt"><b>현지화 콘텐츠·전문가 협업</b><span>의료진의 전문성과 병원의 강점을 현지 언어와 감성으로 전달합니다.</span></div></li>
-          <li><span class="num">3</span><div class="txt"><b>계정 관리·검색 최적화</b><span>꾸준한 업로드와 현지 키워드 관리로 노출을 유지합니다.</span></div></li>
-          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span>유입된 문의를 전담 창구가 상담하고 병의원 예약으로 넘깁니다.</span></div></li>
+          <li><span class="num">1</span><div class="txt"><b>공식 계정 구축·위탁</b><span>주요 해외 플랫폼에 공식 계정을 세우고 <span class="hl">운영을 위탁</span>받습니다.</span></div></li>
+          <li><span class="num">2</span><div class="txt"><b>현지화 콘텐츠·전문가 협업</b><span><span class="hl">의료진의 전문성과 병원의 강점</span>을 현지 언어와 감성으로 전달합니다.</span></div></li>
+          <li><span class="num">3</span><div class="txt"><b>계정 관리·검색 최적화</b><span>꾸준한 업로드와 <span class="hl">현지 키워드 관리</span>로 노출을 유지합니다.</span></div></li>
+          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span>유입된 문의를 <span class="hl">전담 창구가 상담</span>하고 병의원 예약으로 넘깁니다.</span></div></li>
         </ul>
       </div>
       <div class="model-media-wrap">
-        <div class="model-media"><img src="./images/online-content.jpg" alt="해외 공식 SNS 의료 콘텐츠 운영 예시" loading="lazy"></div>
-        <p class="media-cap">해외 공식 계정 의료 콘텐츠 운영 예시</p>
+        <div class="model-media">
+          <img src="./images/online-content.jpg"
+               srcset="./images/online-content-480.jpg 480w, ./images/online-content-800.jpg 800w, ./images/online-content.jpg 1024w"
+               sizes="(max-width:980px) calc(100vw - 48px), (max-width:1180px) 46vw, 540px"
+               alt="해외 공식 SNS 의료 콘텐츠 운영 예시" width="1024" height="331" loading="lazy" decoding="async">
+        </div>
       </div>
     </div>
 
-    <div class="model-block rev reveal" id="offline">
+    <!-- OFFLINE: 이미지 → 텍스트 -->
+    <div class="model-block reveal" id="offline">
       <div class="model-media-wrap">
-        <div class="model-media"><img src="./images/offline-content.jpg" alt="현지 KOL·체험 콘텐츠 및 제휴 모객 예시" loading="lazy"></div>
-        <p class="media-cap">현지 KOL·제휴 기반 모객 콘텐츠 예시</p>
+        <div class="model-media">
+          <img src="./images/offline-content.jpg"
+               srcset="./images/offline-content-480.jpg 480w, ./images/offline-content-900.jpg 900w, ./images/offline-content.jpg 1280w"
+               sizes="(max-width:980px) calc(100vw - 48px), (max-width:1180px) 46vw, 540px"
+               alt="현지 협회·단체와의 업무협약 및 제휴 모객 현장" width="1280" height="720" loading="lazy" decoding="async">
+        </div>
       </div>
       <div class="model-content">
         <span class="model-tag">OFFLINE · 협회·단체 제휴</span>
         <h3>현지 네트워크로<br>신뢰받는 길을 엽니다</h3>
-        <p class="desc">해외 현지 에이전트와 협회·단체 제휴를 통해 환자를 모읍니다. 현지 단체 회원과 지역 사회에 신뢰도 높은 의료 서비스를 안내하고, 유입된 환자의 문의 응대를 Hiionn이 수행해 병의원 예약으로 연결합니다. 통역·안내 등 방문 편의 지원도 함께 설계합니다.</p>
+        <p class="desc">해외 현지 에이전트와 <span class="hl">협회·단체 제휴</span>를 통해 환자를 모읍니다. 현지 단체 회원과 지역 사회에 <span class="hl">신뢰도 높은 의료 서비스</span>를 안내하고, 유입된 환자의 <span class="hl-p">문의 응대를 Hiionn이 수행해 병의원 예약으로 연결</span>합니다. <span class="hl">통역·안내 등 방문 편의 지원</span>도 함께 설계합니다.</p>
         <ul class="model-steps">
-          <li><span class="num">1</span><div class="txt"><b>현지 협회·단체 제휴</b><span>신뢰 기반의 현지 조직과 협력 체계를 구축합니다.</span></div></li>
-          <li><span class="num">2</span><div class="txt"><b>환자·방문객 소개·유치</b><span>회원 및 지역 사회에 병의원을 안내하고 모객합니다.</span></div></li>
-          <li><span class="num">3</span><div class="txt"><b>통역·방문 편의 지원</b><span>상담·통역·방문 안내 등 현지 환자의 편의를 돕습니다.</span></div></li>
-          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span>Hiionn 전담 창구가 응대해 병의원 예약으로 연결합니다.</span></div></li>
+          <li><span class="num">1</span><div class="txt"><b>현지 협회·단체 제휴</b><span><span class="hl">신뢰 기반의 현지 조직</span>과 협력 체계를 구축합니다.</span></div></li>
+          <li><span class="num">2</span><div class="txt"><b>환자·방문객 소개·유치</b><span>회원 및 지역 사회에 병의원을 <span class="hl">안내하고 모객</span>합니다.</span></div></li>
+          <li><span class="num">3</span><div class="txt"><b>통역·방문 편의 지원</b><span><span class="hl">상담·통역·방문 안내</span> 등 현지 환자의 편의를 돕습니다.</span></div></li>
+          <li><span class="num">4</span><div class="txt"><b>문의 응대 → 예약 연결</b><span><span class="hl">Hiionn 전담 창구</span>가 응대해 병의원 예약으로 연결합니다.</span></div></li>
         </ul>
       </div>
     </div>
@@ -336,20 +494,73 @@
     <div class="sec-head center reveal">
       <div class="eng-label">Content Strategy</div>
       <h2 class="sec-title">신뢰를 쌓는 세 가지 콘텐츠</h2>
-      <p class="sec-sub">단순 홍보가 아니라, 해외 소비자가 병원을 '선택할 이유'를 느끼게 하는 콘텐츠를 설계합니다. 공간·의료진·실제 경험을 자연스럽게 담아 신뢰 자산으로 축적합니다.</p>
+      <p class="sec-sub">단순 홍보가 아니라, 해외 소비자가 병원을 <span class="hl-p">'선택할 이유'</span>를 느끼게 하는 콘텐츠를 설계합니다. <span class="hl">공간·의료진·실제 경험</span>을 자연스럽게 담아 <span class="hl">신뢰 자산으로 축적</span>합니다.</p>
     </div>
     <div class="ct-grid">
       <div class="ct-card reveal">
-        <div class="thumb"><img src="./images/content-vlog.jpg" alt="병원 방문 VLOG 콘텐츠 예시" loading="lazy"></div>
-        <div class="body"><div class="tag">TYPE 01 · VLOG</div><h4>병원 방문 브이로그</h4><p>환자 시점으로 도착·대기·상담·공간을 자연스럽게 담아, 병원의 환경과 서비스 신뢰를 전달합니다.</p></div>
+        <div class="thumb">
+          <img src="./images/content-vlog.jpg"
+               srcset="./images/content-vlog-480.jpg 480w, ./images/content-vlog-800.jpg 800w, ./images/content-vlog.jpg 881w"
+               sizes="(max-width:980px) calc(100vw - 68px), 340px"
+               alt="병원 방문 VLOG 콘텐츠 예시" width="881" height="261" loading="lazy" decoding="async">
+        </div>
+        <div class="body"><div class="tag">TYPE 01 · VLOG</div><h4>병원 방문 브이로그</h4><p><span class="hl">환자 시점</span>으로 도착·대기·상담·공간을 자연스럽게 담아, <span class="hl">병원의 환경과 서비스 신뢰</span>를 전달합니다.</p></div>
       </div>
       <div class="ct-card reveal">
-        <div class="thumb"><img src="./images/content-interview.jpg" alt="의료진 인터뷰 콘텐츠 예시" loading="lazy"></div>
-        <div class="body"><div class="tag">TYPE 02 · INTERVIEW</div><h4>의료진 인터뷰</h4><p>의료진이 직접 설명하는 대화형 콘텐츠로 전문성과 신뢰, 병원의 철학을 함께 전달합니다.</p></div>
+        <div class="thumb">
+          <img src="./images/content-interview.jpg"
+               srcset="./images/content-interview-480.jpg 480w, ./images/content-interview-800.jpg 800w, ./images/content-interview.jpg 951w"
+               sizes="(max-width:980px) calc(100vw - 68px), 340px"
+               alt="의료진 인터뷰 콘텐츠 예시" width="951" height="261" loading="lazy" decoding="async">
+        </div>
+        <div class="body"><div class="tag">TYPE 02 · INTERVIEW</div><h4>의료진 인터뷰</h4><p><span class="hl">의료진이 직접 설명하는 대화형 콘텐츠</span>로 <span class="hl">전문성과 신뢰,</span> 병원의 철학을 함께 전달합니다.</p></div>
       </div>
       <div class="ct-card reveal">
-        <div class="thumb"><img src="./images/content-review.jpg" alt="후기·추천 콘텐츠 예시" loading="lazy"></div>
-        <div class="body"><div class="tag">TYPE 03 · REVIEW</div><h4>경험·후기 콘텐츠</h4><p>경과를 담은 리얼한 후기로 신뢰를 강화합니다. 과장 없는 표현으로 광고 심의 기준을 지킵니다.</p></div>
+        <div class="thumb">
+          <img src="./images/content-review.jpg"
+               srcset="./images/content-review-480.jpg 480w, ./images/content-review-800.jpg 800w, ./images/content-review.jpg 914w"
+               sizes="(max-width:980px) calc(100vw - 68px), 340px"
+               alt="후기·추천 콘텐츠 예시" width="914" height="268" loading="lazy" decoding="async">
+        </div>
+        <div class="body"><div class="tag">TYPE 03 · REVIEW</div><h4>경험·후기 콘텐츠</h4><p>경과를 담은 <span class="hl">리얼한 후기로 신뢰를 강화</span>합니다. 과장 없는 표현으로 <span class="hl">광고 심의 기준</span>을 지킵니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 미니프로그램 데모 ================= -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eng-label">WeChat Mini Program · Demo</div>
+      <h2 class="sec-title">위챗 미니프로그램 고객 경험 데모</h2>
+      <p class="sec-sub">해외 환자가 <span class="hl">WeChat(위챗) 안에서</span> 병원 탐색부터 <span class="hl">AI 상담, 예약, 결제까지 끊김 없이</span> 경험하는 흐름을 그대로 시연합니다. <span class="hl-p">아래 폰 화면을 직접 눌러보세요.</span> (예시 데이터이며 실제 예약·결제는 발생하지 않습니다.)</p>
+    </div>
+    <div class="demo-layout reveal">
+      <div class="demo-side">
+        <h3>클릭 한 번으로<br>이어지는 고객 경험</h3>
+        <p>흩어진 상담·예약·결제를 <span class="hl">하나의 미니프로그램 안에서</span> 연결합니다. 아래 시나리오를 눌러 체험을 시작하세요.</p>
+        <div class="demo-scenarios">
+          <button type="button" onclick="dStart('medical')"><span class="idx">01</span><strong>병원 예약 플로우</strong><span aria-hidden="true">↗</span></button>
+          <button type="button" onclick="dStart('academy')"><span class="idx">02</span><strong>아카데미 신청</strong><span aria-hidden="true">↗</span></button>
+          <button type="button" onclick="dGo('ai')"><span class="idx">03</span><strong>AI 예약·결제 Q&amp;A</strong><span aria-hidden="true">↗</span></button>
+        </div>
+        <p class="demo-note">INTERACTIVE DEMO · 2026<br>실제 WeChat·결제·AI API 미연동</p>
+      </div>
+
+      <div class="device">
+        <div class="d-status"><span>9:41</span><span aria-hidden="true">▮▮▮ ◉ ▰</span></div>
+        <div class="d-bar"><span id="d-title">Hiionn 海温</span><span class="d-capsule" aria-hidden="true">••• ◉</span></div>
+        <div class="d-banner">体验演示 · 示例数据 · 不产生真实预约或扣款</div>
+        <main class="d-main" id="d-app" aria-live="polite"></main>
+        <nav class="d-nav" id="d-nav" aria-label="미니프로그램 하단 탭"></nav>
+      </div>
+
+      <div class="demo-side last">
+        <h3 id="d-guide-title">병원 예약 플로우</h3>
+        <p id="d-guide-desc">병원과 시술을 확인하고, AI 안내를 거쳐 <span class="hl">예약·결제까지</span>.</p>
+        <div class="demo-scenarios demo-steps-list" id="d-steps"></div>
+        <p class="demo-note">AI 답변에 표시되는 버튼으로 <span class="hl">예약·결제 화면을 바로 연결</span>합니다. 브라우저 시연용 데모입니다.</p>
       </div>
     </div>
   </div>
@@ -362,10 +573,10 @@
       <h2 class="sec-title">해외 환자의 여정, 처음부터 끝까지</h2>
     </div>
     <div class="journey-grid">
-      <div class="jcard reveal"><div class="step">01</div><h4>발견 · 관심</h4><p>현지 공식 계정과 제휴 안내를 통해 병의원을 처음 접합니다.</p></div>
-      <div class="jcard reveal"><div class="step">02</div><h4>문의 · 상담</h4><p>전담 창구가 모국어로 궁금증을 풀고 예약 전 안내를 제공합니다.</p></div>
-      <div class="jcard reveal"><div class="step">03</div><h4>내원 · 진료</h4><p>확정된 일정에 맞춰 병의원이 진료하고, 방문 편의를 지원합니다.</p></div>
-      <div class="jcard reveal"><div class="step">04</div><h4>사후 · 재방문</h4><p>진료 후 소통과 만족 경험이 재방문과 소개로 이어집니다.</p></div>
+      <div class="jcard reveal"><div class="step">01</div><h4>발견 · 관심</h4><p><span class="hl">현지 공식 계정과 제휴 안내</span>를 통해 병의원을 처음 접합니다.</p></div>
+      <div class="jcard reveal"><div class="step">02</div><h4>문의 · 상담</h4><p>전담 창구가 <span class="hl">모국어로</span> 궁금한 점을 풀고 예약 전 안내를 제공합니다.</p></div>
+      <div class="jcard reveal"><div class="step">03</div><h4>내원 · 진료</h4><p><span class="hl">확정된 일정</span>에 맞춰 병의원이 진료하고, 방문 편의를 지원합니다.</p></div>
+      <div class="jcard reveal"><div class="step">04</div><h4>사후 · 재방문</h4><p>진료 후 소통과 만족 경험이 <span class="hl">재방문과 소개</span>로 이어집니다.</p></div>
     </div>
   </div>
 </section>
@@ -375,11 +586,11 @@
     <div class="sec-head reveal">
       <div class="eng-label">Roles &amp; Responsibilities</div>
       <h2 class="sec-title">명확한 역할 분담</h2>
-      <p class="sec-sub">병의원은 진료와 최소한의 협조에 집중하고, 해외 유치의 번거로운 과정은 Hiionn이 전담합니다.</p>
+      <p class="sec-sub">병의원은 <span class="hl">진료와 최소한의 협조</span>에 집중하고, <span class="hl-p">해외 유치의 번거로운 과정은 Hiionn이 전담</span>합니다.</p>
     </div>
     <div class="reveal" style="overflow-x:auto;">
       <table class="rr-table">
-        <thead><tr><th>영역</th><th>Hiionn 담당</th><th>병의원 협조</th></tr></thead>
+        <thead><tr><th scope="col">영역</th><th scope="col">Hiionn 담당</th><th scope="col">병의원 협조</th></tr></thead>
         <tbody>
           <tr><td>해외 공식 계정 운영</td><td class="hion">계정 구축·콘텐츠 제작·관리 전담</td><td>현장 촬영·기본 정보 협조</td></tr>
           <tr><td>전문가(KOL) 협업 콘텐츠</td><td class="hion">섭외·기획·제작 전담</td><td>방문·촬영 일정 협조</td></tr>
@@ -400,9 +611,9 @@
       <h2 class="sec-title">Hiionn이 다른 이유</h2>
     </div>
     <div class="wh-grid">
-      <div class="wh-card reveal"><div class="num">01</div><h4>온·오프라인 통합</h4><p>온라인 콘텐츠와 오프라인 제휴를 한 체계로 엮어, 어느 한쪽에 의존하지 않는 안정적인 유입 구조를 만듭니다.</p></div>
-      <div class="wh-card reveal"><div class="num">02</div><h4>문의 응대 전담</h4><p>환자 문의 응대를 Hiionn이 직접 맡습니다. 병의원은 확정된 예약만 받으면 되므로 운영 부담이 크게 줄어듭니다.</p></div>
-      <div class="wh-card reveal"><div class="num">03</div><h4>준법·신뢰 기반</h4><p>외국인환자 유치업 등록 기반으로 의료법과 광고 심의 기준을 지켜 운영하여, 병의원의 법적 부담을 낮춥니다.</p></div>
+      <div class="wh-card reveal"><div class="num">01</div><h4>온·오프라인 통합</h4><p>온라인 콘텐츠와 오프라인 제휴를 <span class="hl">한 체계로 엮어,</span> 어느 한쪽에 의존하지 않는 <span class="hl">안정적인 유입 구조</span>를 만듭니다.</p></div>
+      <div class="wh-card reveal"><div class="num">02</div><h4>문의 응대 전담</h4><p>환자 문의 응대를 <span class="hl">Hiionn이 직접 맡습니다.</span> 병의원은 <span class="hl">확정된 예약만</span> 받으면 되므로 <span class="hl">운영 부담이 크게 줄어듭니다.</span></p></div>
+      <div class="wh-card reveal"><div class="num">03</div><h4>준법·신뢰 기반</h4><p><span class="hl">외국인환자 유치업 등록</span> 기반으로 <span class="hl">의료법과 광고 심의 기준</span>을 지켜 운영하여, <span class="hl">병의원의 법적 부담</span>을 낮춥니다.</p></div>
     </div>
   </div>
 </section>
@@ -414,12 +625,13 @@
       <h2 class="sec-title">자주 묻는 질문</h2>
     </div>
     <div class="reveal">
-      <div class="faq-item"><div class="faq-q">계정 운영 위탁은 어떤 방식으로 진행되나요?<span class="plus">+</span></div><div class="faq-a"><p>병의원의 공식 해외 SNS 계정을 위탁받아 콘텐츠 기획·제작·업로드·관리를 Hiionn이 전담합니다. 병의원은 현장 촬영 협조와 기본 정보 제공 정도만 하시면 됩니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q">특정 진료과만 가능한가요?<span class="plus">+</span></div><div class="faq-a"><p>아닙니다. 피부·성형·치과·안과·정형외과·내과·한방·건강검진 등 전 진료 분야를 대상으로 하며, 과목 특성에 맞춰 콘텐츠와 제휴 전략을 설계합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q">환자 문의와 예약은 누가 담당하나요?<span class="plus">+</span></div><div class="faq-a"><p>Hiionn 전담 창구가 환자 문의를 모국어로 응대하고, 병의원과의 예약 소통까지 연결합니다. 병의원은 확정된 예약 일정만 확인하시면 됩니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q">오프라인 제휴는 어떤 형태인가요?<span class="plus">+</span></div><div class="faq-a"><p>해외 현지 에이전트 및 협회·단체와의 제휴를 통해 환자를 소개·유치하고, 통역·방문 안내 등 편의를 지원합니다. 유입된 환자의 응대와 예약 연결은 Hiionn이 수행합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q">의료광고 관련 규정은 어떻게 대응하나요?<span class="plus">+</span></div><div class="faq-a"><p>외국인환자 유치업 등록 기반으로 의료법과 의료광고 심의 기준에 맞춰 콘텐츠를 제작합니다. 심의가 필요한 사항은 병의원과 사전에 협의합니다.</p></div></div>
-      <div class="faq-item"><div class="faq-q">계약과 정산 조건은 어떻게 되나요?<span class="plus">+</span></div><div class="faq-a"><p>협력 범위(온라인·오프라인·응대 범위 등)를 병의원 상황에 맞춰 선택하실 수 있으며, 세부 조건은 성과 기반으로 상담 시 협의합니다. 계약서에 역할과 책임을 명확히 명시합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">계정 운영 위탁은 어떤 방식으로 진행되나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>병의원의 공식 해외 SNS 계정을 위탁받아 <span class="hl">콘텐츠 기획·제작·업로드·관리를 Hiionn이 전담</span>합니다. 병의원은 <span class="hl">현장 촬영 협조와 기본 정보 제공</span> 정도만 하시면 됩니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">미니프로그램 데모는 실제로 동작하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>소개서의 데모는 WeChat 미니프로그램의 고객 경험을 브라우저에서 미리 보여주기 위한 <span class="hl">클릭형 시연</span>입니다. <span class="hl-p">예시 데이터로 동작하며 실제 예약·결제·AI API와는 연동되지 않습니다.</span> 정식 구축 시 <span class="hl">실제 WeChat Pay·CS·예약 시스템</span>과 연결합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">특정 진료과만 가능한가요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>아닙니다. 피부·성형·치과·안과·정형외과·내과·한방·건강검진 등 <span class="hl-p">전 진료 분야</span>를 대상으로 하며, <span class="hl">과목 특성에 맞춰</span> 콘텐츠와 제휴 전략을 설계합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">환자 문의와 예약은 누가 담당하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p><span class="hl">Hiionn 전담 창구</span>가 환자 문의를 <span class="hl">모국어로 응대</span>하고, 병의원과의 예약 소통까지 연결합니다. 병의원은 <span class="hl">확정된 예약 일정만</span> 확인하시면 됩니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">오프라인 제휴는 어떤 형태인가요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>해외 현지 에이전트 및 <span class="hl">협회·단체와의 제휴</span>를 통해 환자를 소개·유치하고, <span class="hl">통역·방문 안내</span> 등 편의를 지원합니다. 유입된 환자의 <span class="hl">응대와 예약 연결은 Hiionn이 수행</span>합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">의료광고 관련 규정은 어떻게 대응하나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p><span class="hl">외국인환자 유치업 등록</span> 기반으로 <span class="hl">의료법과 의료광고 심의 기준</span>에 맞춰 콘텐츠를 제작합니다. 심의가 필요한 사항은 <span class="hl">병의원과 사전에 협의</span>합니다.</p></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">계약과 정산 조건은 어떻게 되나요?<span class="plus" aria-hidden="true">+</span></div><div class="faq-a"><p>협력 범위(온라인·오프라인·응대 범위 등)를 <span class="hl">병의원 상황에 맞춰 선택</span>하실 수 있으며, 세부 조건은 <span class="hl">성과 기반으로 상담 시 협의</span>합니다. 계약서에 <span class="hl">역할과 책임을 명확히 명시</span>합니다.</p></div></div>
     </div>
   </div>
 </section>
@@ -428,7 +640,7 @@
   <div class="wrap">
     <div class="reveal">
       <h2>해외 환자 유치, 지금 함께<br>설계해 보시겠어요?</h2>
-      <p>협업 미팅을 통해 병의원 맞춤 전략과 진행 방식을 안내해 드립니다.</p>
+      <p>협업 미팅을 통해 <span class="hl">병의원 맞춤 전략과 진행 방식</span>을 안내해 드립니다.</p>
       <a href="mailto:hiionn@acromobility.com" class="btn-main">협업 미팅 요청하기</a>
     </div>
   </div>
@@ -436,7 +648,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot-top"><img src="./images/logo-horizontal.png" alt="Hiionn 로고"></div>
+    <div class="foot-top"><img src="./images/logo-horizontal.png" alt="Hiionn 로고" width="1024" height="349" loading="lazy"></div>
     <div class="foot-info">
       <strong>(주)아크로모빌리티</strong><br>
       인천광역시 서구 청라한내로72번길 7-15, 제3층 제304호 (청라동, 센트럴시티)<br>
@@ -447,26 +659,165 @@
 </footer>
 
 <a href="#cta" class="float-cta">
-  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
   협업 문의
 </a>
 
 <script>
+  /* ===== 소개서 공통 스크립트 ===== */
   const header=document.getElementById('header');
   const onScroll=()=>{header.classList.toggle('scrolled',window.scrollY>60);};
-  window.addEventListener('scroll',onScroll);onScroll();
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
   const burger=document.getElementById('burger'),menu=document.getElementById('menu');
-  burger.addEventListener('click',()=>menu.classList.toggle('open'));
-  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  burger.addEventListener('click',()=>{
+    const open=menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    menu.classList.remove('open');burger.setAttribute('aria-expanded','false');
+  }));
   const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);}});},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click',()=>{
-      const item=q.parentElement,a=item.querySelector('.faq-a'),open=item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
-      if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  function toggleFaq(q){
+    const item=q.parentElement,a=item.querySelector('.faq-a'),open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
     });
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true');}
+  }
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>toggleFaq(q));
+    q.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleFaq(q);}});
   });
+
+  /* ================= 미니프로그램 데모 ================= */
+  const DP={back:'M15 5l-7 7 7 7',home:'M3 10l9-7 9 7v10H3z M9 20v-7h6v7',hospital:'M4 21V5h16v16M9 3h6v5H9z M9 12h6m-3-3v6',academy:'M2 8l10-5 10 5-10 5z M6 11v6c4 3 8 3 12 0v-6M22 8v9',ai:'M12 2l2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8z',my:'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 21v-2a8 8 0 0 1 16 0v2',pin:'M19 9c0 6-7 12-7 12S5 15 5 9a7 7 0 1 1 14 0M14 9a2 2 0 1 1-4 0 2 2 0 0 1 4 0',proc:'M12 3c0 0-7 8-7 12a7 7 0 0 0 14 0c0-4-7-12-7-12M8 15c0 2 1 3 3 3',event:'M3 8h18v13H3zM2 5h20v4H2z'};
+  const dIcon=(n,c='dicon')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true"><path d="${DP[n]||DP.ai}"/></svg>`;
+  const yuan=n=>'¥'+n.toLocaleString('zh-CN');
+
+  /* 데모용 이미지 — 특정 병원이 아닌 일반(제너릭) 이미지 */
+  const IMG={
+    clinic:{src:'./images/demo/clinic.jpg',s4:'./images/demo/clinic-400.jpg',s8:'./images/demo/clinic-800.jpg',alt:'밝고 현대적인 병원 리셉션 및 대기 공간 (예시 이미지)'},
+    treatment:{src:'./images/demo/treatment.jpg',s4:'./images/demo/treatment-400.jpg',s8:'./images/demo/treatment-800.jpg',alt:'깨끗한 피부 관리 진료실 (예시 이미지)'},
+    academy:{src:'./images/demo/academy.jpg',s4:'./images/demo/academy-400.jpg',s8:'./images/demo/academy-800.jpg',alt:'밝은 교육용 세미나실 (예시 이미지)'},
+    hero:{src:'./images/demo/hero-abstract.jpg',s4:'./images/demo/hero-abstract-400.jpg',s8:'./images/demo/hero-abstract-800.jpg',alt:''}
+  };
+  const dImg=(k,sizes='340px')=>{const i=IMG[k];return `<img src="${i.src}" srcset="${i.s4} 400w, ${i.s8} 800w" sizes="${sizes}" alt="${i.alt}" loading="lazy" decoding="async">`;};
+
+  const HOS=[{id:'h1',name:'海温 · 江南医疗中心',dept:'皮肤科 · 整形外科',loc:'首尔 · 江南区',tag:'中文服务',img:'clinic'},{id:'h2',name:'海温 · 首尔皮肤诊所',dept:'皮肤科',loc:'首尔 · 瑞草区',tag:'皮肤科',img:'treatment'}];
+  const SVC=[{id:'s1',h:'h1',name:'皮肤管理咨询',dep:'皮肤科',desc:'了解皮肤管理项目与到院咨询流程',price:100,full:150,img:'treatment'},{id:'s2',h:'h1',name:'面部整形咨询',dep:'整形外科',desc:'与医疗团队沟通咨询需求及就诊安排',price:100,full:150,img:'clinic'},{id:'s3',h:'h2',name:'光电项目咨询',dep:'皮肤科',desc:'了解光电项目的一般信息与咨询安排',price:100,full:150,img:'treatment'}];
+  const CRS=[{id:'a1',name:'国际医疗协调员实务',short:'MEDICAL COORDINATOR',cat:'医疗服务',dur:'8 周',sch:'2026.10.10 — 11.28',time:'每周六 10:00–13:00',price:1280,full:1600,desc:'从中文接待到预约管理，在场景练习中了解国际医疗服务流程。',cap:'20 人（示例）',img:'academy'},{id:'a2',name:'内容创作与品牌沟通',short:'CONTENT CREATOR',cat:'内容创作',dur:'4 周',sch:'2026.10.17 — 11.07',time:'每周六 14:00–17:00',price:680,full:880,desc:'学习短视频策划、内容表达与品牌项目沟通。',cap:'15 人（示例）',img:'academy'}];
+
+  let dRoute='home',dSvc='s1',dCrs='a1',dFlow='medical',dDate='2026-10-08',dTime='10:00',dChat=[];
+  const dApp=document.getElementById('d-app'),dTitle=document.getElementById('d-title');
+
+  const STEPS={medical:['精选医院','选择项目','AI 咨询','确认预约','支付完成'],academy:['Academy','选择课程','课程详情','提交报名','报名完成']};
+  const STEP_ROUTE={medical:{hospitals:0,'hospital/':0,services:1,'service/':1,ai:2,booking:3,pay:3,'done-medical':4},academy:{academy:0,'course/':2,apply:3,'done-academy':4}};
+  function dCurStep(){
+    const m=STEP_ROUTE[dFlow]||{};
+    if(m[dRoute]!==undefined)return m[dRoute];
+    for(const k in m){if(k.endsWith('/')&&dRoute.startsWith(k))return m[k];}
+    return -1;
+  }
+  function dRenderGuide(){
+    const map={medical:{title:'병원 예약 플로우',desc:'병원과 시술을 확인하고, AI 안내를 거쳐 <span class="hl">예약·결제까지</span>.'},academy:{title:'아카데미 신청',desc:'관심 과정을 고르고, 상세 확인 후 <span class="hl">신청·결제까지</span>.'}};
+    document.getElementById('d-guide-title').textContent=map[dFlow].title;
+    document.getElementById('d-guide-desc').innerHTML=map[dFlow].desc;
+    const cur=dCurStep();
+    document.getElementById('d-steps').innerHTML=STEPS[dFlow].map((s,i)=>`<button type="button" class="${i===cur?'cur':''}"><span class="idx">${i+1}</span><strong>${s}</strong></button>`).join('');
+  }
+  function dStart(f){dFlow=f;dGo(f==='medical'?'hospitals':'academy');}
+  function dGo(r){dRoute=r;dRender();dApp.scrollTop=0;}
+  window.dStart=dStart;window.dGo=dGo;
+
+  function dTtl(t,back='home',side=''){return `<div class="d-ptitle"><button type="button" onclick="dGo('${back}')" aria-label="뒤로"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${DP.back}"/></svg></button><h1>${t}</h1><span class="side">${side}</span></div>`;}
+  function dNotice(t){return `<div class="d-notice">${t}</div>`;}
+  function dClinic(h){return `<button type="button" class="d-card" onclick="dGo('hospital/${h.id}')"><div class="d-thumb">${dImg(h.img)}<span class="cap">MEDICAL CENTER</span></div><div class="d-card-body"><span class="d-badge">${h.tag}</span><h3>${h.name}</h3><p>${h.dept} · ${h.loc}</p><p style="color:var(--blue)">查看医院 ↗</p></div></button>`;}
+  function dSvcCard(s){return `<button type="button" class="d-card" onclick="dGo('service/${s.id}')"><div class="d-thumb">${dImg(s.img)}<span class="cap">${s.dep==='皮肤科'?'SKIN CONSULTATION':'MEDICAL CONSULTATION'}</span></div><div class="d-card-body"><span class="d-badge">${s.dep}</span><h3>${s.name}</h3><p>${HOS.find(h=>h.id===s.h).name}</p><div class="d-price">${yuan(s.price)} <small>示例预约金</small></div></div></button>`;}
+  function dCrsCard(c){return `<button type="button" class="d-card" onclick="dGo('course/${c.id}')"><div class="d-thumb">${dImg(c.img)}<span class="cap">${c.short}</span></div><div class="d-card-body"><div style="display:flex;justify-content:space-between;align-items:center"><span class="d-badge green">开放报名 · 演示</span><span style="font-size:11px;color:#8e99aa">${c.dur}</span></div><h3>${c.name}</h3><p>${c.sch}</p><div class="d-price">${yuan(c.price)}<del>${yuan(c.full)}</del><small> 示例学费</small></div></div></button>`;}
+
+  function dHome(){return `<div class="d-home-head"><span class="d-brand">hiionn 海温</span><span class="d-loc">${dIcon('pin','')} 首尔</span></div>
+    <div class="d-hero"><img class="bgimg" src="${IMG.hero.s8}" alt="" aria-hidden="true" loading="lazy" decoding="async"><span class="ov">CARE, CONNECTED.</span><h2>在韩国，<br>安心开启每一步。</h2><p>医疗预约 · 中文支持 · 学习成长</p><button type="button" onclick="dStart('medical')">探索医疗服务 ↗</button></div>
+    <div class="d-short">
+      <button type="button" onclick="dStart('medical')"><span class="d-tile">${dIcon('hospital','')}</span>合作医院</button>
+      <button type="button" onclick="dGo('services')"><span class="d-tile">${dIcon('proc','')}</span>诊疗项目</button>
+      <button type="button" onclick="dStart('academy')"><span class="d-tile">${dIcon('academy','')}</span>Academy</button>
+      <button type="button" onclick="dGo('events')"><span class="d-tile">${dIcon('event','')}</span>精选活动</button>
+    </div>
+    <button type="button" class="d-ai-strip" onclick="dGo('ai')"><span class="d-ai-sym" aria-hidden="true">✦</span><span><strong>你好，我是海温 AI 助手</strong><small>预约、支付有疑问？让我来帮你。</small></span><span style="margin-left:auto;color:var(--blue)" aria-hidden="true">›</span></button>
+    <div class="d-sec-head"><h3>精选医院</h3><button type="button" onclick="dGo('hospitals')">查看全部 ›</button></div><div class="d-cards">${dClinic(HOS[0])}</div>
+    <div class="d-sec-head"><h3>海温 Academy</h3><button type="button" onclick="dStart('academy')">查看全部 ›</button></div><div class="d-cards">${dCrsCard(CRS[0])}</div>
+    ${dNotice('所有医院、项目、价格与课程均为演示示例。图片为通用示意图，非特定医院实景。')}`;}
+
+  function dHospitals(){return dTtl('医疗服务')+`<div class="d-cards">${HOS.map(dClinic).join('')}</div>`;}
+  function dHospital(id){const h=HOS.find(x=>x.id===id)||HOS[0];return dTtl('医院详情','hospitals')+`<div class="d-cover">${dImg(h.img)}<span class="cap">${h.tag}</span></div><div class="d-detail"><span class="d-badge">${h.tag}</span><h2>${h.name}</h2><p class="p">${h.dept} · 中文咨询支持</p><div class="d-info"><div class="d-info-box"><span>所在地区</span><strong>${h.loc}</strong></div><div class="d-info-box"><span>咨询语言</span><strong>中文 / 한국어</strong></div></div></div>${dNotice('示例医院 · 图片为通用示意图，非医院实景。资质将在正式服务中核验。')}<div class="d-detail"><h3 style="color:var(--ink)">可预约项目</h3>${SVC.filter(s=>s.h===h.id).map(s=>`<button type="button" class="d-card" style="margin-bottom:10px" onclick="dGo('service/${s.id}')"><div class="d-card-body"><span class="d-badge">${s.dep}</span><h3>${s.name} ›</h3><p>${s.desc}</p></div></button>`).join('')}</div><div class="d-actionbar"><button type="button" class="d-btn d-secondary" onclick="dGo('ai')">AI 咨询</button><button type="button" class="d-btn d-primary" onclick="dGo('service/${SVC.find(s=>s.h===h.id).id}')">选择咨询项目</button></div>`;}
+  function dServices(){return dTtl('诊疗项目','hospitals')+`<div class="d-cards">${SVC.map(dSvcCard).join('')}</div>`;}
+  function dService(id){dSvc=SVC.some(s=>s.id===id)?id:'s1';dFlow='medical';const s=SVC.find(s=>s.id===dSvc);return dTtl('项目详情','services')+`<div class="d-cover">${dImg(s.img)}<span class="cap">HIIONN MEDICAL CONSULTATION</span></div><div class="d-detail"><span class="d-badge">${s.dep}</span><h2>${s.name}</h2><p class="p">${HOS.find(h=>h.id===s.h).name}</p><div class="d-price">${yuan(s.price)}<del>${yuan(s.full)}</del><small> 示例预约金</small></div><p class="p" style="margin-top:14px">${s.desc}。本页面仅用于了解服务与预约面诊，不对个人适用性或效果作出判断。到院后由医疗团队评估确认。</p></div>${dNotice('预约金与实际医疗费用分开。金额为示例，不代表真实报价。')}<div class="d-actionbar"><button type="button" class="d-btn d-secondary" onclick="dGo('ai')">✦ AI 咨询</button><button type="button" class="d-btn d-primary" onclick="dGo('booking')">立即预约</button></div>`;}
+
+  function dBooking(){const s=SVC.find(s=>s.id===dSvc);const dates=['2026-10-08','2026-10-09','2026-10-10'],times=['10:00','13:30','16:00'];return dTtl('预约确认','service/'+dSvc)+`<div class="d-detail"><h3 style="color:var(--ink)">${s.name}</h3><p class="p">${HOS.find(h=>h.id===s.h).name}</p><h3 style="color:var(--ink);margin-top:16px">选择日期</h3><div class="d-opt">${dates.map(d=>`<button type="button" class="${d===dDate?'on':''}" onclick="dDate='${d}';dRender()">${d.slice(5)}</button>`).join('')}</div><h3 style="color:var(--ink)">选择时间</h3><div class="d-opt">${times.map(t=>`<button type="button" class="${t===dTime?'on':''}" onclick="dTime='${t}';dRender()">${t}</button>`).join('')}</div><div class="d-order"><div class="r"><span>项目</span><b>${s.name}</b></div><div class="r"><span>日期 / 时间</span><b>${dDate.slice(5)} ${dTime}</b></div><div class="r"><span>示例预约金</span><b style="color:var(--blue)">${yuan(s.price)}</b></div></div></div>${dNotice('24 小时前可变更或取消并退还预约金。示例规则仅用于演示。')}<div class="d-actionbar"><button type="button" class="d-btn d-primary" onclick="dGo('pay')">微信支付 ${yuan(s.price)}</button></div>`;}
+  function dPay(){const s=SVC.find(s=>s.id===dSvc);return dTtl('微信支付','booking')+`<div class="d-done"><div class="ok" style="background:#e7f0ff;color:var(--blue);font-size:30px" aria-hidden="true">✦</div><h2>确认支付</h2><p>示例预约金 <b style="color:var(--blue)">${yuan(s.price)}</b><br>${s.name} · ${dDate.slice(5)} ${dTime}</p></div><div class="d-actionbar"><button type="button" class="d-btn d-secondary" onclick="dGo('booking')">返回</button><button type="button" class="d-btn d-primary" onclick="dGo('done-medical')">确认支付</button></div>`;}
+  function dDoneMedical(){const s=SVC.find(s=>s.id===dSvc);return `<div class="d-done"><div class="ok" aria-hidden="true">✓</div><h2>预约已提交</h2><p>客服将在 24 小时内与您确认。<br>以下为示例预约信息。</p></div><div class="d-order"><div class="r"><span>项目</span><b>${s.name}</b></div><div class="r"><span>医院</span><b>${HOS.find(h=>h.id===s.h).name}</b></div><div class="r"><span>日期 / 时间</span><b>${dDate.slice(5)} ${dTime}</b></div><div class="r"><span>已付示例预约金</span><b style="color:var(--blue)">${yuan(s.price)}</b></div></div>${dNotice('演示数据，不产生真实预约或扣款。')}<div class="d-actionbar"><button type="button" class="d-btn d-secondary" onclick="dGo('ai')">AI 咨询</button><button type="button" class="d-btn d-primary" onclick="dGo('home')">返回首页</button></div>`;}
+
+  function dAcademy(){dFlow='academy';return dTtl('海温 Academy','home','学习 · 连接 · 成长')+`<div class="d-pad" style="padding-bottom:0"><div class="d-hero" style="margin:0"><img class="bgimg" src="${IMG.academy.s8}" alt="" aria-hidden="true" loading="lazy" decoding="async"><span class="ov">LEARN. CONNECT. GROW.</span><h2>让学习，<br>成为下一步的起点。</h2><p>医疗服务与内容创作 · 实务课程</p></div></div><div class="d-cards">${CRS.map(dCrsCard).join('')}</div>`;}
+  function dCourse(id){dCrs=CRS.some(c=>c.id===id)?id:'a1';dFlow='academy';const c=CRS.find(c=>c.id===dCrs);return dTtl('课程详情','academy')+`<div class="d-cover">${dImg(c.img)}<span class="cap">${c.short}</span></div><div class="d-detail"><span class="d-badge green">开放报名 · 演示</span><h2>${c.name}</h2><p class="p">${c.desc}</p><div class="d-price">${yuan(c.price)}<del>${yuan(c.full)}</del><small> 示例学费</small></div><div class="d-info"><div class="d-info-box"><span>教育周期</span><strong>${c.dur}</strong></div><div class="d-info-box"><span>募集人数</span><strong>${c.cap}</strong></div><div class="d-info-box"><span>上课时间</span><strong>${c.time}</strong></div><div class="d-info-box"><span>教学语言</span><strong>中文 / 韩语辅助</strong></div></div></div>${dNotice('课程信息为演示示例。实际开课需由运营方确认。')}<div class="d-actionbar"><button type="button" class="d-btn d-secondary" onclick="dGo('ai')">咨询</button><button type="button" class="d-btn d-primary" onclick="dGo('apply')">立即报名</button></div>`;}
+  function dApply(){const c=CRS.find(c=>c.id===dCrs);return dTtl('报名确认','course/'+dCrs)+`<div class="d-detail"><h3 style="color:var(--ink)">${c.name}</h3><div class="d-order" style="margin:14px 0"><div class="r"><span>课程</span><b>${c.name}</b></div><div class="r"><span>周期</span><b>${c.dur}</b></div><div class="r"><span>时间</span><b>${c.sch}</b></div><div class="r"><span>示例学费</span><b style="color:var(--blue)">${yuan(c.price)}</b></div></div></div>${dNotice('示例报名流程，不产生真实报名或扣款。')}<div class="d-actionbar"><button type="button" class="d-btn d-primary" onclick="dGo('done-academy')">微信支付 ${yuan(c.price)}</button></div>`;}
+  function dDoneAcademy(){const c=CRS.find(c=>c.id===dCrs);return `<div class="d-done"><div class="ok" aria-hidden="true">✓</div><h2>报名已提交</h2><p>课程顾问将与您确认开课详情。<br>以下为示例报名信息。</p></div><div class="d-order"><div class="r"><span>课程</span><b>${c.name}</b></div><div class="r"><span>周期 / 时间</span><b>${c.dur} · ${c.sch}</b></div><div class="r"><span>已付示例学费</span><b style="color:var(--blue)">${yuan(c.price)}</b></div></div>${dNotice('演示数据，不产生真实报名或扣款。')}<div class="d-actionbar"><button type="button" class="d-btn d-secondary" onclick="dGo('academy')">返回 Academy</button><button type="button" class="d-btn d-primary" onclick="dGo('home')">返回首页</button></div>`;}
+
+  function dEvents(){return dTtl('精选活动','home')+`<div class="d-pad"><div class="d-hero" style="margin:0 0 14px"><img class="bgimg" src="${IMG.hero.s8}" alt="" aria-hidden="true" loading="lazy" decoding="async"><span class="ov">HIIONN · OCTOBER</span><h2>初次到院，<br>从一次沟通开始。</h2><p>中文咨询预约活动 · 2026.10.01–10.31</p></div>${SVC.slice(0,2).map(s=>`<button type="button" class="d-card" style="margin-bottom:10px" onclick="dGo('service/${s.id}')"><div class="d-card-body"><h3>${s.name}</h3><p>示例预约金优惠 · 不含实际医疗费用</p><div class="d-price">${yuan(s.price)}<del>${yuan(s.full)}</del></div></div></button>`).join('')}</div>${dNotice('活动与价格均为演示数据。')}`;}
+
+  const AI_QA=[
+    {q:'如何预约？',a:'您可以在「医疗服务」中选择医院与咨询项目，支付示例预约金后客服会在 24 小时内与您确认时间。',btn:['去预约','service/s1']},
+    {q:'预约金会退吗？',a:'示例规则：到院 24 小时前可免费变更或取消并退还预约金。正式服务中以医院条款为准。'},
+    {q:'支持中文吗？',a:'是的，海温提供中文咨询与接待支持。您可直接用中文沟通需求。'},
+    {q:'想报名课程',a:'海温 Academy 提供医疗服务与内容创作实务课程，您可在 Academy 查看并报名。',btn:['去 Academy','academy']}
+  ];
+  function dAi(){
+    if(dChat.length===0)dChat=[{from:'bot',t:'你好，我是海温 AI 助手。预约、支付或课程有任何疑问，都可以问我。（演示版）'}];
+    return dTtl('海温 AI 助手','home','DEMO')+`<div class="d-chat" id="d-chat">${dChat.map(m=>`<div class="d-msg ${m.from}">${m.t}</div>${m.btn?`<div class="d-chat-btns"><button type="button" onclick="dGo('${m.btn[1]}')">${m.btn[0]} ↗</button></div>`:''}`).join('')}</div><div class="d-quick">${AI_QA.map((x,i)=>`<button type="button" onclick="dAsk(${i})">${x.q}</button>`).join('')}</div>`;
+  }
+  function dAsk(i){const x=AI_QA[i];dChat.push({from:'user',t:x.q});dChat.push({from:'bot',t:x.a,btn:x.btn});dRender();const c=document.getElementById('d-chat');if(c)c.scrollTop=c.scrollHeight;}
+  window.dAsk=dAsk;
+
+  function dMy(){return dTtl('我的','home')+`<div class="d-pad"><div class="d-order" style="margin:0 0 14px"><div class="r"><span>昵称</span><b>演示用户</b></div><div class="r"><span>语言</span><b>中文</b></div></div><div class="d-notice" style="margin:0">示例个人中心。预约记录、课程、优惠券等将在正式版本中显示。</div></div>`;}
+
+  function dNav(){
+    const items=[['home','首页','home'],['hospitals','医疗','hospital'],['academy','Academy','academy'],['ai','AI','ai'],['my','我的','my']];
+    const med=['hospitals','services','booking','pay','events','done-medical'];
+    const aca=['academy','apply','done-academy'];
+    let cur='home';
+    if(med.includes(dRoute)||dRoute.startsWith('hospital/')||dRoute.startsWith('service/'))cur='hospitals';
+    else if(aca.includes(dRoute)||dRoute.startsWith('course/'))cur='academy';
+    else if(dRoute==='ai')cur='ai';
+    else if(dRoute==='my')cur='my';
+    document.getElementById('d-nav').innerHTML=items.map(([r,t,ic])=>`<button type="button" class="${cur===r?'active':''}" onclick="dGo('${r}')"${cur===r?' aria-current="page"':''}>${dIcon(ic)}${t}</button>`).join('');
+  }
+
+  function dRender(){
+    const r=dRoute;let html='';
+    if(r==='home')html=dHome();
+    else if(r==='hospitals')html=dHospitals();
+    else if(r.startsWith('hospital/'))html=dHospital(r.split('/')[1]);
+    else if(r==='services')html=dServices();
+    else if(r.startsWith('service/'))html=dService(r.split('/')[1]);
+    else if(r==='booking')html=dBooking();
+    else if(r==='pay')html=dPay();
+    else if(r==='done-medical')html=dDoneMedical();
+    else if(r==='academy')html=dAcademy();
+    else if(r.startsWith('course/'))html=dCourse(r.split('/')[1]);
+    else if(r==='apply')html=dApply();
+    else if(r==='done-academy')html=dDoneAcademy();
+    else if(r==='events')html=dEvents();
+    else if(r==='ai')html=dAi();
+    else if(r==='my')html=dMy();
+    else html=dHome();
+    dApp.innerHTML=html;
+    dTitle.textContent = (r==='academy'||r.startsWith('course/')||r==='apply'||r==='done-academy') ? '海温 Academy' : r==='ai' ? '海温 AI 助手' : 'Hiionn 海温';
+    dNav();
+    dRenderGuide();
+  }
+  dRender();
 </script>
 </body>
 </html>
