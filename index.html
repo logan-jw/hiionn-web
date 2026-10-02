@@ -30,6 +30,14 @@
   .eng-label{font-family:'Poppins';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:13px;color:var(--purple);margin-bottom:14px;}
   .sec-title{font-size:clamp(26px,3.6vw,42px);font-weight:800;line-height:1.3;letter-spacing:-.02em;}
   .sec-sub{margin-top:16px;color:var(--ink-soft);font-size:clamp(15px,1.6vw,18px);line-height:1.8;}
+  /* ===== 줄바꿈 규칙 (추가) ===== */
+  .sec-title,.sec-sub{word-break:keep-all;overflow-wrap:break-word;}
+  .nw{white-space:nowrap;}
+  .m-br{display:none;}
+  @media (max-width:768px){
+    .pc-br{display:none;}
+    .m-br{display:inline;}
+  }
   .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
   .reveal.on{opacity:1;transform:none;}
   /* 본문 강조: hl = 진한 강조, hl-p = 핵심 포인트 강조 */
@@ -418,7 +426,7 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="eng-label">About Hiionn</div>
-        <p class="lead">"진료는 <span class="hl-p">병원</span>이, 해외 환자 유치는 <span class="hl-p">Hiionn</span>이."</p>
+        <p class="lead">"진료는 <span class="hl-p">병원,</span> 해외 환자 유치는 <span class="hl-p">Hiionn.</span>"</p>
         <p>Hiionn은 (주)아크로모빌리티가 운영하는 <span class="hl">외국인 환자 유치 전문 브랜드</span>입니다. 해외 환자와 국내 의료기관을 연결하고, <span class="hl">유치 전 과정을 온라인·오프라인 양쪽에서</span> 지원합니다.</p>
         <p>병원은 복잡한 해외 계정 운영과 문의 응대에 <span class="hl">자원을 쓰지 않아도 됩니다.</span> 콘텐츠 제작, 계정 관리, 환자 문의 응대, 예약 연결까지 — <span class="hl">유치에 필요한 전 과정을 Hiionn이 맡고,</span> 병원은 <span class="hl-p">확정된 예약 환자의 진료에만 집중</span>합니다.</p>
       </div>
@@ -554,7 +562,7 @@
     <div class="sec-head center reveal">
       <div class="eng-label">WeChat Mini Program · Demo</div>
       <h2 class="sec-title">위챗 미니프로그램 고객 경험 데모</h2>
-      <p class="sec-sub">해외 환자가 <span class="hl">WeChat(위챗) 안에서</span> 병원 탐색부터 <span class="hl">AI 상담, 예약, 결제까지 끊김 없이</span> 경험하는 흐름을 그대로 시연합니다. <span class="hl-p">아래 폰 화면을 직접 눌러보세요.</span> (예시 데이터이며 실제 예약·결제는 발생하지 않습니다.)</p>
+      <p class="sec-sub">해외 환자가 <span class="hl nw">WeChat(위챗) 안에서</span> 병원 탐색부터<br class="pc-br"> <span class="hl">AI 상담, 예약, 결제까지 <span class="nw">끊김 없이</span></span> 경험하는 흐름을 그대로 시연합니다.<br class="pc-br"> <span class="hl-p nw">아래 폰 화면을 직접 눌러보세요.</span></p>
     </div>
     <div class="demo-layout reveal">
       <div class="demo-side">
@@ -580,7 +588,7 @@
         <h3 id="d-guide-title">병원 예약 플로우</h3>
         <p id="d-guide-desc">병원과 시술을 확인하고, AI 안내를 거쳐 <span class="hl">예약·결제까지</span>.</p>
         <div class="demo-scenarios demo-steps-list" id="d-steps"></div>
-        <p class="demo-note">AI 답변에 표시되는 버튼으로 <span class="hl">예약·결제 화면을 바로 연결</span>합니다. 브라우저 시연용 데모입니다.</p>
+        <p class="demo-note">AI 답변에 표시되는 버튼으로 <span class="hl"><br class="pc-br">예약·결제 화면을 바로 연결</span>합니다.</p>
       </div>
     </div>
   </div>
